@@ -1,0 +1,212 @@
+/* ============================
+   Responsive Styles
+   ============================ */
+
+   @media (max-width: 600px) {
+    // ----- Nav Bar -----
+    .nav-list-top {
+      display: none;
+    }
+  
+    .nav-list-content {
+      .icon {
+        img {
+          padding: 0.1rem;
+        }
+      }
+    }
+  
+    // ----- Header -----
+    .wrapper {
+      padding: 0;
+    }
+  
+    #Header {
+      margin: 0;
+    }
+  
+    .header-back {
+      bottom: 0;
+    }
+  
+    .header_container {
+      flex-direction: column;
+    }
+  
+    .header-action-aria {
+      padding: 0;
+    }
+  
+    // ----- About -----
+    .about-content {
+      grid-template-columns: 1fr;
+    }
+  
+    // ----- Services -----
+    .services-list {
+      grid-template-columns: 1fr;
+  
+      h3 {
+        grid-column: span 1;
+      }
+    }
+  
+    .service-describe {
+      grid-template-columns: 1fr;
+    }
+  
+    // ----- Experience -----
+    .experience-content {
+      grid-template-columns: 1fr;
+    }
+  
+    .experience-box {
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1fr;
+    }
+  
+    // ----- Projects -----
+    .project-content {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+  
+    .project-bottom {
+      grid-column: span 1;
+    }
+  
+    .popup {
+      video {
+        width: 100%;
+      }
+    }
+  
+    // ----- Certificates -----
+    .certificate-content {
+      gap: 3rem;
+    }
+  
+    .certificate-item:nth-of-type(n) {
+      flex-direction: column;
+      background: linear-gradient(to bottom, rgba(0, 57, 122, 0.1) 0%, white 50%);
+    }
+  
+    .certificate-item:nth-of-type(-n + 2) {
+      .certificate-img {
+        display: none;
+      }
+    }
+  
+    // ----- Contact -----
+    #Contact {
+      .contact-items {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3, 1fr);
+      }
+    }
+  }
+  
+  @media (min-width: 601px) and (max-width: 1024px) {
+    // ----- Nav Bar -----
+    .nav-list-top {
+      display: none;
+    }
+  
+    .nav-list-content {
+      .icon {
+        img {
+          padding: 0.3rem;
+        }
+      }
+    }
+  
+    // ----- Header -----
+    .wrapper {
+      padding: 0;
+    }
+  
+    #Header {
+      margin: 0;
+    }
+  
+    body {
+      margin: 0;
+    }
+  
+    .header_container {
+      flex-direction: column;
+    }
+  
+    .header-back {
+      bottom: 0;
+    }
+  
+    // ----- About -----
+    .about-content {
+      grid-template-columns: 1fr;
+    }
+  
+    .about-specialize {
+      grid-template-columns: 1fr 1fr;
+    }
+  
+    // ----- Services -----
+    .services-list {
+      grid-template-columns: 1fr;
+  
+      h3 {
+        grid-column: span 1;
+      }
+    }
+  
+    .service-describe {
+      grid-template-columns: 3fr 1fr;
+    }
+  
+    // ----- Experience -----
+    .experience-content {
+      grid-template-columns: 1fr;
+    }
+  
+    .experience-box {
+      flex-direction: column;
+    }
+  
+    // ----- Certificates -----
+    .certificate-content {
+      gap: 3rem;
+    }
+  
+    .certificate-item:nth-of-type(n) {
+      flex-direction: column;
+      background: linear-gradient(to bottom, rgba(0, 57, 122, 0.1) 0%, white 50%);
+    }
+  
+    .certificate-item:nth-of-type(-n + 2) {
+      .certificate-img {
+        display: none;
+      }
+    }
+  
+    // ----- Projects -----
+    .project-content {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+  
+    .project-bottom {
+      grid-column: span 1;
+    }
+  
+    // ----- Contact -----
+    .contact-items {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  @media (min-width: 1025px) {
+    .nav-list-bottom {
+      display: none;
+    }
+  }
+  

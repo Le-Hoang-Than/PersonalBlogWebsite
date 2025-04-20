@@ -1,0 +1,424 @@
+/* ============================
+   Responsive Styles
+   ============================ */
+@media (max-width: 600px) {
+  .nav-list-top {
+    display: none;
+  }
+  .nav-list-content .icon img {
+    padding: 0.1rem;
+  }
+  .wrapper {
+    padding: 0;
+  }
+  #Header {
+    margin: 0;
+  }
+  .header-back {
+    bottom: 0;
+  }
+  .header_container {
+    flex-direction: column;
+  }
+  .header-action-aria {
+    padding: 0;
+  }
+  .about-content {
+    grid-template-columns: 1fr;
+  }
+  .services-list {
+    grid-template-columns: 1fr;
+  }
+  .services-list h3 {
+    grid-column: span 1;
+  }
+  .service-describe {
+    grid-template-columns: 1fr;
+  }
+  .experience-content {
+    grid-template-columns: 1fr;
+  }
+  .experience-box {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+  .project-content {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .project-bottom {
+    grid-column: span 1;
+  }
+  .popup video {
+    width: 100%;
+  }
+  .certificate-content {
+    gap: 3rem;
+  }
+  .certificate-item:nth-of-type(n) {
+    flex-direction: column;
+    background: linear-gradient(to bottom, rgba(0, 57, 122, 0.1) 0%, white 50%);
+  }
+  .certificate-item:nth-of-type(-n + 2) .certificate-img {
+    display: none;
+  }
+  #Contact .contact-items {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 1fr);
+  }
+}
+@media (min-width: 601px) and (max-width: 1024px) {
+  .nav-list-top {
+    display: none;
+  }
+  .nav-list-content .icon img {
+    padding: 0.3rem;
+  }
+  .wrapper {
+    padding: 0;
+  }
+  #Header {
+    margin: 0;
+  }
+  body {
+    margin: 0;
+  }
+  .header_container {
+    flex-direction: column;
+  }
+  .header-back {
+    bottom: 0;
+  }
+  .about-content {
+    grid-template-columns: 1fr;
+  }
+  .about-specialize {
+    grid-template-columns: 1fr 1fr;
+  }
+  .services-list {
+    grid-template-columns: 1fr;
+  }
+  .services-list h3 {
+    grid-column: span 1;
+  }
+  .service-describe {
+    grid-template-columns: 3fr 1fr;
+  }
+  .experience-content {
+    grid-template-columns: 1fr;
+  }
+  .experience-box {
+    flex-direction: column;
+  }
+  .certificate-content {
+    gap: 3rem;
+  }
+  .certificate-item:nth-of-type(n) {
+    flex-direction: column;
+    background: linear-gradient(to bottom, rgba(0, 57, 122, 0.1) 0%, white 50%);
+  }
+  .certificate-item:nth-of-type(-n + 2) .certificate-img {
+    display: none;
+  }
+  .project-content {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .project-bottom {
+    grid-column: span 1;
+  }
+  .contact-items {
+    grid-template-columns: 1fr;
+  }
+}
+@media (min-width: 1025px) {
+  .nav-list-bottom {
+    display: none;
+  }
+}
+@font-face {
+  font-family: "Hack";
+  src: url("../fonts/Hack/Hack-Regular.woff2") format("woff2"), url("../fonts/Hack/Hack-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Hack";
+  src: url("../fonts/Hack/Hack-Bold.woff2") format("woff2"), url("../fonts/Hack/Hack-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Hack";
+  src: url("../fonts/Hack/Hack-Italic.woff2") format("woff2"), url("../fonts/Hack/Hack-Italic.woff") format("woff");
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Hack";
+  src: url("../fonts/Hack/Hack-BoldItalic.woff2") format("woff2"), url("../fonts/Hack/Hack-BoldItalic.woff") format("woff");
+  font-weight: 700;
+  font-style: italic;
+}
+@font-face {
+  font-family: "DancingScript";
+  src: url("../fonts/DancingScript/DancingScript-Regular.ttf");
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+  font-family: "Hack", sans-serif;
+  border: none;
+  outline: none;
+  scroll-behavior: smooth;
+  letter-spacing: 0.4px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  -webkit-user-drag: none;
+}
+
+body {
+  background-color: #fff;
+}
+body::-webkit-scrollbar {
+  width: 6px;
+  background-color: #fff;
+}
+body::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background-color: #000;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  transition: 0.3s ease transform;
+}
+img:hover {
+  transform: scale(1.1);
+}
+
+p {
+  font-size: 1.5em;
+  line-height: 140%;
+  color: #555;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1, h2, h3, h4, h5 {
+  line-height: 120%;
+  transition: transform 0.2s ease-in;
+}
+h1:hover, h2:hover, h3:hover, h4:hover, h5:hover {
+  transform: translateY(3px);
+  text-shadow: 0 0 20px #5c829c;
+}
+
+h1 {
+  font-size: 3em;
+  color: #000;
+}
+
+h2 {
+  font-size: 1em;
+  color: #555;
+}
+
+h3 {
+  font-size: 26px;
+  color: #000;
+}
+
+h4 {
+  font-size: 19px;
+  color: #000;
+}
+
+h5 {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+small, li {
+  font-size: 16px;
+}
+
+hr {
+  border: 0;
+  margin: 0.5rem 0;
+}
+hr:first-of-type {
+  height: 1px;
+  background: #353535;
+}
+hr:last-of-type {
+  height: 2px;
+  border-radius: 50%;
+  background: linear-gradient(90deg, #fff, #353535, #fff);
+}
+
+#toggle-btn {
+  background-color: transparent;
+  cursor: pointer;
+  position: fixed;
+  bottom: 5px;
+  right: 5px;
+  z-index: 2;
+  transition: transform 2s linear;
+}
+
+.border .wrapper * {
+  border: 1px solid black !important;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  width: 10rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  color: #000;
+  border: 1px solid #555;
+  font-weight: 600;
+  font-size: 15px;
+  transition: 0.5s ease;
+  background: #fff;
+}
+.btn:hover {
+  background: #555;
+  color: #fff;
+}
+.btn.btn-dark {
+  color: #fff;
+  background: #353535;
+  text-decoration: none !important;
+}
+.btn.btn-dark:hover {
+  background: #000;
+}
+
+.wrapper {
+  padding: 0 3rem;
+  display: flex;
+  flex-direction: column;
+}
+.wrapper section {
+  padding: 5rem 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+.container [class$=-header] {
+  text-align: center;
+}
+
+.nav-bar_container {
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  border-top: 3px solid #000;
+  border-bottom: 3px solid #000;
+  box-shadow: 0 0 10px 3px #fff;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 0.3rem 1rem;
+  gap: 1rem;
+  background-color: #fff;
+}
+.nav-bar_container .brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #7ea4b8;
+}
+.nav-bar_container .brand h3 {
+  font-weight: bolder;
+  font-family: "DancingScript";
+  font-size: 4vh;
+  color: #e5ebf1;
+  letter-spacing: 0.5rem;
+  margin: 0 1rem;
+}
+.nav-bar_container .nav-list-top {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.nav-bar_container .nav-list-top ul {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+.nav-bar_container .nav-list-top ul a {
+  letter-spacing: 0.2rem;
+  line-height: 140%;
+  text-transform: uppercase;
+  font-weight: 900;
+  color: #353535;
+}
+.nav-bar_container .nav-list-top ul a:hover {
+  color: #555;
+  transition: 0.4s ease;
+}
+.nav-bar_container .nav-list-bottom {
+  position: fixed;
+  width: 100vw;
+  bottom: 0;
+  background-color: #fff;
+}
+.nav-bar_container .nav-list-bottom .nav-list-content {
+  display: flex;
+  justify-content: center;
+}
+.nav-bar_container .nav-list-bottom .nav-list-content ul {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 0.9vh;
+}
+.nav-bar_container .nav-list-bottom .nav-list-content .icon {
+  display: flex;
+  align-items: center;
+  gap: 0.9vh;
+}
+.nav-bar_container .nav-list-bottom .nav-list-content .icon img {
+  height: 3vh;
+  width: 3vh;
+  border-radius: 50%;
+}
+.nav-bar_container .nav-list-bottom .nav-list-content .icon.active {
+  background-color: #a8bfcf;
+  border-radius: 3vh;
+  padding: 0.3vh;
+}
+.nav-bar_container .nav-list-bottom .nav-list-content .icon.active span {
+  display: block;
+  font-weight: 900;
+  font-size: 3vw;
+  font-family: "DancingScript";
+  letter-spacing: 0.9vw;
+  color: #e5ebf1;
+  margin-right: 0.6vh;
+}
+.nav-bar_container .nav-list-bottom .nav-list-content span {
+  color: #353535;
+  font-size: 0vh;
+  transition: all 0.4s ease;
+}

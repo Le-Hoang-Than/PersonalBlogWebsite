@@ -1,6 +1,160 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog</title>
+  <link rel="icon" type="image/x-icon" href="./assets/icons/icons8-blog-100.ico">
+</head>
+<body>
+  <pre>
+    /PersonalBlogWebsite
+    └── /blog
+        ├── index.html                             # Trang chủ
+        │
+        ├── /news                                  # Tin tức / cập nhật
+        │   └── index.html         
+        │           
+        ├── /tools                                 # Các công cụ tự viết hoặc tổng hợp
+        │   └── index.html          
+        │          
+        ├── /ctf                                   # CTF writeups
+        │   └── index.html  
+        │                  
+        ├── /my-roadmap                             # Lộ trình học tập cá nhân
+        │   └── index.html 
+        │                   
+        ├── /portfolio                             # Portfolio cá nhân
+        │   └── index.html                    
+        │
+        ├── /topics                               # Chuyên mục kiến thức nền tảng
+        │   ├── index.html                        # Trang chọn category
+        │   │
+        │   ├── /network
+        │   │   ├── index.html                    # Chọn tag (VD: TCP, DNS...)
+        │   │   ├── tcp.html
+        │   │   ├── dns.html
+        │   │   └── network.css / network.js
+        │   │
+        │   ├── /security
+        │   │   ├── index.html
+        │   │   ├── xss.html
+        │   │   ├── csrf.html
+        │   │   └── security.css / security.js
+        │   │
+        │   ├── /cryptography
+        │   │   ├── index.html
+        │   │   ├── aes.html
+        │   │   ├── rsa.html
+        │   │   └── crypto.css / crypto.js
+        │   │
+        │   ├── /mathematics
+        │   │   ├── index.html
+        │   │   ├── calculus.html
+        │   │   ├── discrete.html
+        │   │   └── math.css / math.js
+        │   │
+        │   └── /operating-systems
+        │       ├── index.html
+        │       ├── memory.html
+        │       ├── filesystem.html
+        │       └── os.css / os.js
+        │
+        ├── /components
+        │   ├── navbar.html
+        │   ├── footer.html
+        │   ├── navbar-left.html        # Navbar bên trái
+        │   ├── navbar-right.html       # Navbar bên phải
+        │   └── feedback-form.html      # Phần feedback
+        │
+        ├── /assets
+        │   ├── /css
+        │   │   ├── /common                   # CSS chung toàn site
+        │   │   │   └── style.css
+        │   │   ├── /news                                  
+        │   │   │   └── news.css                    
+        │   │   ├── /tools                                 
+        │   │   │   └── tools.css                    
+        │   │   ├── /ctf                                   
+        │   │   │   └── ctf.css                    
+        │   │   ├── /my-roadmap                             
+        │   │   │   └── my-roadmap.css                    
+        │   │   └── /portfolio                             
+        │   │       └── portfolio.css
+        │   │
+        │   ├── /scss
+        │   │   ├── /common                   # sCSS chung toàn site
+        │   │   │   └── style.scss
+        │   │   ├── /news                                  
+        │   │   │   ├── news.scss                    
+        │   │   │   └── _responsive-news.scss                    
+        │   │   ├── /tools                                 
+        │   │   │   ├── tools.scss                    
+        │   │   │   └── _responsive-tools.scss                    
+        │   │   ├── /ctf                                   
+        │   │   │   ├── ctf.scss                    
+        │   │   │   └── _responsive-ctf.scss                    
+        │   │   ├── /my-roadmap                             
+        │   │   │   ├── my-roadmap.scss                    
+        │   │   │   └── _responsive-my-roadmap.scss                    
+        │   │   └── /portfolio                             
+        │   │       ├── portfolio.scss
+        │   │       └── _responsive-portfolio.scss
+        │   │
+        │   ├── /js
+        │   │   ├── 
+        │   │   ├── navbar.js
+        │   │   ├── footer.js
+        │   │   ├── feedback.js
+        │   │   ├── news.js
+        │   │   └── roadmap.js
+        │   │   ├── /common                   # js chung toàn site
+        │   │   │   ├── script.js                 # JS chung (navbar, darkmode,...)
+        │   │   │   ├── navbar.js
+        │   │   │   ├── footer.js
+        │   │   │   └── feedback.js
+        │   │   ├── /news                                  
+        │   │   │   └── news.js                    
+        │   │   ├── /tools                                 
+        │   │   │   └── tools.js                    
+        │   │   ├── /ctf                                   
+        │   │   │   └── ctf.js                    
+        │   │   ├── /my-roadmap                             
+        │   │   │   └── my-roadmap.js                    
+        │   │   └── /portfolio                             
+        │   │       └── portfolio.js
+        │   │
+        │   ├── /icons
+        │   │   └── blog.icon
+        │   │
+        │   ├── /fonts
+        │   │   ├── /DancingScript                                  
+        │   │   └── /Hack                                 
+        │   │
+        │   ├── /videos
+        │   │
+        │   └── /images
+        │       ├── /news                                  
+        │       │           
+        │       ├── /tools                                 
+        │       │          
+        │       ├── /ctf                                   
+        │       │                  
+        │       ├── /my-roadmap                             
+        │       │                   
+        │       ├── /portfolio                            
+        │       │
+        │       └── /topics                               
+        │
+        ├── /data
+        │   └── tags.json                     # Metadata bài viết: title, slug, path, tags
+        │
+        └── feedback.html                     # (tùy chọn) trang feedback độc lập
+  </pre>
+</body>
+</html>
 <!-- Home, News, Kiến thức nền tảng(Network, Security, Cryptography, Mathematics, Operating Systems), tools, CTF, my roadmap, portfolio. -->
-<ul className="navbar">
+<!-- <ul className="navbar" disable>
     <li><a href="/">Home</a></li>
     <li><a href="/news">News</a></li>
     <li><a href="/knowledge/network">Kiến thức nền tảng</a>
@@ -16,77 +170,5 @@
     <li><a href="/ctf">CTF</a></li>
     <li><a href="/roadmap">My Roadmap</a></li>
     <li><a href="/portfolio">Portfolio</a></li>
-  </ul>
+  </ul> -->
   
-<pre>
-  /PersonalBlogWebsite
-  │
-  │
-  └── /blog
-      ├── index.html                            # Trang chủ
-      ├── news                                  # Tin tức / cập nhật
-      ├── tools                                 # Các công cụ tự viết hoặc tổng hợp
-      ├── ctf                                   # CTF writeups
-      ├── myroadmap                             # Lộ trình học tập cá nhân
-      ├── portfolio                             # Portfolio cá nhân
-      │   ├── portfolio.html                    
-      │
-      ├── /topics                               # Chuyên mục kiến thức nền tảng
-      │   ├── topics.html                       # Trang chọn category
-      │   ├── /network
-      │   │   ├── index.html                    # Chọn tag (VD: TCP, DNS...)
-      │   │   ├── tcp.html
-      │   │   ├── dns.html
-      │   │   └── network.css / network.js
-      │   ├── /security
-      │   │   ├── index.html
-      │   │   ├── xss.html
-      │   │   ├── csrf.html
-      │   │   └── security.css / security.js
-      │   ├── /cryptography
-      │   │   ├── index.html
-      │   │   ├── aes.html
-      │   │   ├── rsa.html
-      │   │   └── crypto.css / crypto.js
-      │   ├── /mathematics
-      │   │   ├── index.html
-      │   │   ├── calculus.html
-      │   │   ├── discrete.html
-      │   │   └── math.css / math.js
-      │   └── /operating-systems
-      │       ├── index.html
-      │       ├── memory.html
-      │       ├── filesystem.html
-      │       └── os.css / os.js
-      │
-      ├── /components
-      │   ├── navbar.html
-      │   ├── footer.html
-      │   ├── navbar-left.html        # Navbar bên trái
-      │   ├── navbar-right.html       # Navbar bên phải
-      │   └── feedback-form.html
-      │
-      ├── /assets
-      │   ├── /css
-      │   │   ├── style.css                  # CSS chung toàn site
-      │   │   ├── news.css                   # Trang news
-      │   │   ├── tools.css
-      │   │   └── roadmap.css
-      │   ├── /js
-      │   │   ├── script.js                 # JS chung (navbar, darkmode,...)
-      │   │   ├── navbar.js
-      │   │   ├── footer.js
-      │   │   ├── feedback.js
-      │   │   ├── news.js
-      │   │   └── roadmap.js
-      │   ├── /icons
-      │   ├── /fonts
-      │   ├── /videos
-      │   └── /images
-      │       └── logo.png
-      │
-      ├── /data
-      │   └── tags.json                     # Metadata bài viết: title, slug, path, tags
-      │
-      └── feedback.html                     # (tùy chọn) trang feedback độc lập
-</pre>
