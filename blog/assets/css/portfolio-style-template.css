@@ -594,6 +594,7 @@ img:hover {
 }
 .close-btn {
   height: 2.5rem;
+  width: 2.5rem;
   background-color: white;
   border-radius: 50%;
   padding: 0.5rem;
