@@ -327,12 +327,11 @@ img:hover {
 }
 
 .nav-list-content  span {
-  transition: all 0.5s ease;
   color: var(--color-dark);
   font-weight: 900;
   /* text-transform: uppercase; */
   font-size: 0vh;
-  transition: all 1s ease;
+  transition: all 0.4s ease;
 }
 
 .nav-list-content .icon.active span {
