@@ -313,7 +313,6 @@ img:hover {
   display: flex;
   align-items: center;
   gap: 0.9vh;
-  padding: 0.9vh;
 }
 
 .nav-list-content .icon img {
@@ -324,6 +323,7 @@ img:hover {
 .nav-list-content .icon.active {
   background-color: #a8bfcf;
   border-radius: 3vh;
+  padding: 0.3vh;
 }
 
 .nav-list-content  span {
@@ -336,8 +336,10 @@ img:hover {
 
 .nav-list-content .icon.active span {
   display: block;
-  font-size: 2.5vh;
-
+  font-size: 3vw;
+  font-family: 'DancingScript';
+  color: #e5ebf1;
+  margin-right: 0.6vh;
 }
 
 
@@ -748,16 +750,17 @@ img:hover {
   overflow: hidden;
   display: flex;
   justify-content: center;
-  /* border: 2px solid var(--color-black); */
   background-color: var(--color-white);
 }
 .certificate-info table {
+  table-layout: fixed;
+  width: 100%;
   border-collapse: collapse;
 }
 .certificate-info td,
 th {
   vertical-align: top;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem;
 }
 .certificate-info tr td:first-child h2 {
   color: var(--color-black);
