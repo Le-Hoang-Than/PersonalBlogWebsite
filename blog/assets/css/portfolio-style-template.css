@@ -328,13 +328,14 @@ img:hover {
 
 .nav-list-content  span {
   color: var(--color-dark);
-  font-weight: 900;
   font-size: 0vh;
   transition: all 0.4s ease;
 }
 
 .nav-list-content .icon.active span {
   display: block;
+  font-weight: 900;
+  letter-spacing: .9vw;
   font-size: 3vw;
   font-family: 'DancingScript';
   color: #e5ebf1;
