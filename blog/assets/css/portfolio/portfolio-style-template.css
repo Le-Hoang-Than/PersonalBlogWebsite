@@ -707,9 +707,6 @@ img:hover {
   flex-direction: column;
   gap: 1rem;
 }
-.project-bottom a {
-  margin: 0 auto;
-}
 /* End Project Section */
 
 /* Begin Certificate Section */
