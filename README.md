@@ -15,6 +15,7 @@ Ghi chú:
 
 
 
+<pre>```
 /PersonalBlogWebsite
 └── /blog
     ├── index.html                             # Trang chủ
@@ -75,20 +76,6 @@ Ghi chú:
     │   └── feedback-form.html      # Phần feedback
     │
     ├── /assets
-    │   ├── /css
-    │   │   ├── /common                   # CSS chung toàn site
-    │   │   │   └── style.css
-    │   │   ├── /news                                  
-    │   │   │   └── news.css                    
-    │   │   ├── /tools                                 
-    │   │   │   └── tools.css                    
-    │   │   ├── /ctf                                   
-    │   │   │   └── ctf.css                    
-    │   │   ├── /my-roadmap                             
-    │   │   │   └── my-roadmap.css                    
-    │   │   └── /portfolio                             
-    │   │       └── portfolio.css
-    │   │
     │   ├── /scss
     │   │   ├── /common                   # sCSS chung toàn site
     │   │   │   └── style.scss
@@ -157,3 +144,4 @@ Ghi chú:
     │   └── tags.json                     # Metadata bài viết: title, slug, path, tags
     │
     └── feedback.html                     # (tùy chọn) trang feedback độc lập
+</pre>
