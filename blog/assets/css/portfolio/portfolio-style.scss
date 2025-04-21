@@ -1,10 +1,4 @@
 // =======================
-// Media Queries (Phone, Tablet, Desktop)
-// =======================
-
-@import "_portfolio-responsive";
-
-// =======================
 // Variables
 // =======================
 
@@ -909,3 +903,18 @@ hr {
     }
   }
 }
+
+@media (max-width: 600px) {
+  .nav-list-top {
+    display: none;
+  }
+}
+
+
+// =======================
+// Media Queries (Phone, Tablet, Desktop)
+// =======================
+
+@import "_portfolio-responsive";
+
+

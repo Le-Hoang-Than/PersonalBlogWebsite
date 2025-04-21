@@ -1,16 +1,3 @@
-/* ============================
-   Responsive Styles
-   ============================ */
-@media (min-width: 601px) and (max-width: 1024px) {
-  .nav-list-top {
-    display: none;
-  }
-}
-@media (min-width: 601px) and (max-width: 1024px) {
-  .nav-list-top {
-    display: none;
-  }
-}
 @font-face {
   font-family: "Hack";
   src: url("/blog/assets/fonts/Hack/Hack-Regular.woff2") format("woff2"), url("/blog/assets/fonts/Hack/Hack-Regular.woff") format("woff");
@@ -746,4 +733,145 @@ hr {
 .author-info table th,
 .author-info table td {
   margin: 1rem;
+}
+
+@media (max-width: 600px) {
+  .nav-list-top {
+    display: none;
+  }
+}
+@media (max-width: 600px) {
+  .wrapper,
+  #Header,
+  body {
+    padding: 0;
+    margin: 0vh;
+  }
+  #Nav-Bar .nav-list-top {
+    display: none;
+  }
+  #Nav-Bar .nav-list-content .icon img {
+    padding: 0.1rem;
+  }
+  .wrapper {
+    padding: 0;
+  }
+  #Header .header-back {
+    bottom: 0px;
+  }
+  #Header .header_container {
+    flex-direction: column;
+  }
+  #Header .header_container .header-action-aria {
+    padding: 0;
+  }
+  #About .about-content {
+    grid-template-columns: 1fr;
+  }
+  #Services .services-list {
+    grid-template-columns: 1fr;
+  }
+  #Services .services-list h3 {
+    grid-column: span 1;
+  }
+  #Services .services-list .service-describe {
+    grid-template-columns: 1fr;
+  }
+  #Experience .experience-content {
+    grid-template-columns: 1fr;
+  }
+  #Experience .experience-content .experience-box {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+  #Projects .popup video {
+    width: 100%;
+  }
+  #Projects .project-content {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  #Projects .project-content .project-bottom {
+    grid-column: span 1;
+  }
+  #Certificate .certificate-content {
+    gap: 3rem;
+  }
+  #Certificate .certificate-content .certificate-item:nth-of-type(n) {
+    flex-direction: column;
+    background: linear-gradient(to bottom, rgba(0, 57, 122, 0.1) 0%, white 50%);
+  }
+  #Certificate .certificate-content .certificate-item:nth-of-type(-n + 2) .certificate-img {
+    display: none;
+  }
+  #Contact .contact-items {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 1fr);
+  }
+}
+@media (min-width: 601px) and (max-width: 1024px) {
+  .wrapper,
+  #Header,
+  body {
+    padding: 0;
+    margin: 0vh;
+  }
+  #Nav-Bar .nav-list-top {
+    display: none;
+  }
+  #Nav-Bar .nav-list-content .icon img {
+    padding: 0.3rem;
+  }
+  #Header .header_container {
+    flex-direction: column;
+  }
+  #Header .header-back {
+    bottom: 0px;
+  }
+  #About .about-content {
+    grid-template-columns: 1fr;
+  }
+  #About .about-content .about-specialize {
+    grid-template-columns: 1fr 1fr;
+  }
+  #Services .services-list {
+    grid-template-columns: 1fr;
+  }
+  #Services .services-list h3 {
+    grid-column: span 1;
+  }
+  #Services .services-list .service-describe {
+    grid-template-columns: 3fr 1fr;
+  }
+  .experience-content {
+    grid-template-columns: 1fr;
+  }
+  .experience-box {
+    flex-direction: column;
+  }
+  #Projects .project-content {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  #Projects .project-bottom {
+    grid-column: span 1;
+  }
+  #Certificate .certificate-content {
+    gap: 3rem;
+  }
+  #Certificate .certificate-content .certificate-item:nth-of-type(n) {
+    flex-direction: column;
+    background: linear-gradient(to bottom, rgba(0, 57, 122, 0.1) 0%, white 50%);
+  }
+  #Certificate .certificate-content .certificate-item:nth-of-type(-n + 2) .certificate-img {
+    display: none;
+  }
+  #Contact .contact-items {
+    grid-template-columns: 1fr;
+  }
+}
+@media (min-width: 1025px) {
+  #Nav-Bar .nav-list-bottom {
+    display: none;
+  }
 }
