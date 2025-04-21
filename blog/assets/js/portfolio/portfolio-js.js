@@ -1,15 +1,3 @@
-const toggleBtn = document.getElementById("toggle-btn");
-let isBorderOn = false;
-
-toggleBtn.addEventListener("click", function () {
-  isBorderOn = !isBorderOn;
-
-  if (isBorderOn) {
-    document.body.classList.add("border");
-  } else {
-    document.body.classList.remove("border");
-  }
-});
 
 
 

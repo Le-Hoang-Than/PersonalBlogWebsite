@@ -1,4 +1,8 @@
 {
     "liveServer.settings.port": 5501,
-    "liveServer.settings.CustomBrowser": "microsoft-edge"
+    "liveServer.settings.CustomBrowser": "microsoft-edge",
+    "liveServer.settings.AdvanceCustomBrowserCmdLine": "",
+    "liveServer.settings.ChromeDebuggingAttachment": false,
+    "liveServer.settings.mount": [],
+    "liveServer.settings.root": ""
 }

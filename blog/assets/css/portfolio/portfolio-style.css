@@ -137,20 +137,6 @@ hr {
   background: linear-gradient(90deg, #fff, #353535, #fff);
 }
 
-#toggle-btn {
-  background-color: transparent;
-  cursor: pointer;
-  position: fixed;
-  bottom: 5px;
-  right: 5px;
-  z-index: 2;
-  transition: transform 2s linear;
-}
-
-.border .wrapper * {
-  border: 1px solid black !important;
-}
-
 .btn {
   display: inline-flex;
   align-items: center;

@@ -1,0 +1,221 @@
+// =======================
+// Variables
+// =======================
+
+$color-black: #000;
+$color-white: #fff;
+$color-dark: #353535;
+$color-dark-variant: #555;
+$transition: 0.5s ease;
+
+// =======================
+// Font Face
+// =======================
+
+@font-face {
+  font-family: "Hack";
+  src: url("../../fonts/Hack/Hack-Regular.woff2") format("woff2"),
+    url("../../fonts/Hack/Hack-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Hack";
+  src: url("../../fonts/Hack/Hack-Bold.woff2") format("woff2"),
+    url("../../fonts/Hack/Hack-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Hack";
+  src: url("../../fonts/Hack/Hack-Italic.woff2") format("woff2"),
+    url("../../fonts/Hack/Hack-Italic.woff") format("woff");
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Hack";
+  src: url("../../fonts/Hack/Hack-BoldItalic.woff2") format("woff2"),
+    url("../../fonts/Hack/Hack-BoldItalic.woff") format("woff");
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "DancingScript";
+  src: url("../../fonts/DancingScript/DancingScript-Regular.ttf");
+}
+
+// =======================
+// Reset + Global
+// =======================
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+  font-family: "Hack", sans-serif;
+  border: none;
+  outline: none;
+  scroll-behavior: smooth;
+  letter-spacing: 0.4px;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+body {
+  background-color: $color-white;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    background-color: $color-white;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background-color: $color-black;
+  }
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  transition: 0.3s ease transform;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+// =======================
+// Typography
+// =======================
+
+p {
+  font-size: 1.5em;
+  line-height: 140%;
+  color: $color-dark-variant;
+  transition: transform 0.2s ease-in;
+  &:hover {
+    transform: translateY(3px);
+    text-shadow: 0 0 20px #5c829c;
+  }
+}
+
+a {
+  text-decoration: none;
+  transition: transform 0.2s ease-in;
+  &:hover {
+    transform: translateY(3px);
+    text-shadow: 0 0 20px #5c829c;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  line-height: 120%;
+  transition: transform 0.2s ease-in;
+
+  &:hover {
+    transform: translateY(3px);
+    text-shadow: 0 0 20px #5c829c;
+  }
+}
+
+h1 {
+  font-size: 3em;
+  color: $color-black;
+}
+
+h2 {
+  font-size: 1em;
+  color: $color-dark-variant;
+}
+
+h3 {
+  font-size: 26px;
+  color: $color-black;
+}
+
+h4 {
+  font-size: 19px;
+  color: $color-black;
+}
+
+h5 {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+small,
+li {
+  font-size: 16px;
+}
+
+hr {
+  border: 0;
+  margin: 0.5rem 0;
+  height: 2px;
+  border-radius: 50%;
+  background: linear-gradient(90deg, $color-white, $color-dark, $color-white);
+}
+
+// =======================
+// Components
+// =======================
+#toggle-btn {
+  background-color: transparent;
+  cursor: pointer;
+  position: fixed;
+  right: 5px;
+  bottom: 5px;
+  z-index: 2;
+  transition: transform 2s linear;
+  border: none !important;
+  img{
+    border: none !important;
+  }
+}
+.border {
+    * {
+      border: 1px solid black !important;
+  }
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  width: 10rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  color: $color-black;
+  border: 1px solid $color-dark-variant;
+  font-weight: 600;
+  font-size: 15px;
+  transition: $transition;
+  background: $color-white;
+
+  &:hover {
+    background: $color-dark-variant;
+    color: $color-white;
+  }
+
+  &.btn-dark {
+    color: $color-white;
+    background: $color-dark;
+    text-decoration: none !important;
+
+    &:hover {
+      background: $color-black;
+    }
+  }
+}

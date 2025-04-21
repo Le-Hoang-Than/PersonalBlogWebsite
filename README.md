@@ -76,7 +76,7 @@ Ghi chú:
     │   └── feedback-form.html      # Phần feedback
     │
     ├── /assets
-    │   ├── /scss
+    │   ├── /css
     │   │   ├── /common                   # sCSS chung toàn site
     │   │   │   └── style.scss
     │   │   ├── /news                                  
