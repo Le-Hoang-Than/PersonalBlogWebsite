@@ -277,7 +277,8 @@ hr {
   border-radius: 50%;
 }
 .nav-bar_container .nav-list-bottom .nav-list-content .icon.active {
-  background-color: #a8bfcf;
+  background: linear-gradient(to left, #c8d3eb, white);
+  border: 1px solid #5c829c;
   border-radius: 3vh;
   padding: 0.3vh;
 }
@@ -285,9 +286,7 @@ hr {
   display: block;
   font-weight: 900;
   font-size: 3vw;
-  font-family: "DancingScript";
-  letter-spacing: 0.9vw;
-  color: #e5ebf1;
+  color: #000;
   margin-right: 0.6vh;
 }
 .nav-bar_container .nav-list-bottom .nav-list-content span {
