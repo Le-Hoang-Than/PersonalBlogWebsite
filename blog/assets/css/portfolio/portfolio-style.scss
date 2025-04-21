@@ -14,39 +14,39 @@ $transition: 0.5s ease;
 
 @font-face {
   font-family: "Hack";
-  src: url("/blog/assets/fonts/Hack/Hack-Regular.woff2") format("woff2"),
-    url("/blog/assets/fonts/Hack/Hack-Regular.woff") format("woff");
+  src: url("../../fonts/Hack/Hack-Regular.woff2") format("woff2"),
+    url("../../fonts/Hack/Hack-Regular.woff") format("woff");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Hack";
-  src: url("/blog/assets/fonts/Hack/Hack-Bold.woff2") format("woff2"),
-    url("/blog/assets/fonts/Hack/Hack-Bold.woff") format("woff");
+  src: url("../../fonts/Hack/Hack-Bold.woff2") format("woff2"),
+    url("../../fonts/Hack/Hack-Bold.woff") format("woff");
   font-weight: 700;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Hack";
-  src: url("/blog/assets/fonts/Hack/Hack-Italic.woff2") format("woff2"),
-    url("/blog/assets/fonts/Hack/Hack-Italic.woff") format("woff");
+  src: url("../../fonts/Hack/Hack-Italic.woff2") format("woff2"),
+    url("../../fonts/Hack/Hack-Italic.woff") format("woff");
   font-weight: 400;
   font-style: italic;
 }
 
 @font-face {
   font-family: "Hack";
-  src: url("/blog/assets/fonts/Hack/Hack-BoldItalic.woff2") format("woff2"),
-    url("/blog/assets/fonts/Hack/Hack-BoldItalic.woff") format("woff");
+  src: url("../../fonts/Hack/Hack-BoldItalic.woff2") format("woff2"),
+    url("../../fonts/Hack/Hack-BoldItalic.woff") format("woff");
   font-weight: 700;
   font-style: italic;
 }
 
 @font-face {
   font-family: "DancingScript";
-  src: url("/blog/assets/fonts/DancingScript/DancingScript-Regular.ttf");
+  src: url("../../fonts/DancingScript/DancingScript-Regular.ttf");
 }
 
 // =======================
