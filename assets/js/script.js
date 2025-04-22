@@ -1,5 +1,6 @@
+const basePath = location.hostname === "localhost" ? "" : "/PersonalBlogWebsite";
 // Load navbar
-$("#Navbar").load("./components/navbar.html");
+$("#Navbar").load(`${basePath}/components/navbar.html`);
 
 // Load ruler
 $("#toggle-btn").load("./components/ruler.html", function () {
@@ -10,3 +11,4 @@ $("#toggle-btn").load("./components/ruler.html", function () {
     $("body").toggleClass("border", isBorderOn);
   });
 });
+
