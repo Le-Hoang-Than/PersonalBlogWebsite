@@ -3,8 +3,8 @@ const isLocal =
 const base = document.createElement("base");
 base.href = isLocal ? "" : "/PersonalBlogWebsite";
 document.head.appendChild(base);
-// const basePath =
-//   location.hostname === "127.0.0.1" ? "" : "/PersonalBlogWebsite";
+const basePath =
+  location.hostname === "127.0.0.1" ? "" : "/PersonalBlogWebsite";
 // Load navbar
 $("#Navbar").load("/blog/components/navbar.html");
 
