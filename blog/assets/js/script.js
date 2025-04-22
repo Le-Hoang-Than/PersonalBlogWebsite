@@ -10,3 +10,6 @@ $("#toggle-btn").load("/blog/components/ruler.html", function () {
     $("body").toggleClass("border", isBorderOn);
   });
 });
+const basePath = location.hostname === "localhost" ? "" : "/PersonalBlogWebsite";
+
+$("#Navbar").load(`${basePath}/blog/components/navbar.html`);
