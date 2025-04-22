@@ -1,4 +1,4 @@
-const basePath = location.hostname === "localhost" ? "" : "/PersonalBlogWebsite";
+const basePath = location.hostname === "127.0.0.1" ? "" : "/PersonalBlogWebsite";
 // Load navbar
 $("#Navbar").load(`${basePath}/components/navbar.html`);
 
@@ -11,4 +11,3 @@ $("#toggle-btn").load("./components/ruler.html", function () {
     $("body").toggleClass("border", isBorderOn);
   });
 });
-
