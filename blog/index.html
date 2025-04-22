@@ -3,18 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self'; font-src 'self'; connect-src 'self';">
-  <base href="/PersonalBlogWebsite/">
+  <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self'; font-src 'self'; connect-src 'self';"> -->
+  <script>
+    const isLocal = location.hostname === "127.0.0.1" || location.hostname === "localhost";
+    document.write(`<base href="${isLocal ? "/blog/" : "/PersonalBlogWebsite/blog/"}">`);
+  </script>
   <title>Blog</title>
-  <link rel="icon" type="image/x-icon" href="/blog/assets/icons/icons8-blog-100.ico">
-  <link rel="stylesheet" href="/blog/assets/css/common/style.css">
-  <link rel="stylesheet" href="/blog/assets/css/components/navbar.css">
+  <link rel="icon" type="image/x-icon" href="assets/icons/icons8-blog-100.ico">
+  <link rel="stylesheet" href="assets/css/common/style.css">
+  <link rel="stylesheet" href="assets/css/components/navbar.css">
 </head>
 <body>
   <button id="toggle-btn"></button>
   <div id="Navbar"></div>
 </body>
-<script src="/blog/assets/js/jquery-3.7.1.min.js"></script>
-<script src="/blog/assets/js/script.js"></script>
+<script src="assets/js/jquery-3.7.1.min.js"></script>
+<script src="assets/js/script.js"></script>
 </html>
   
