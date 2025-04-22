@@ -1,8 +1,11 @@
-// Load navbar
-$("#Navbar").load("/blog/components/navbar.html");
+// Xác định base path: dùng cho cả localhost và GitHub Pages
+const basePath = location.hostname === "localhost" ? "" : "/PersonalBlogWebsite";
 
-// Load ruler
-$("#toggle-btn").load("/blog/components/ruler.html", function () {
+// Load Navbar
+$("#Navbar").load(`${basePath}/blog/components/navbar.html`);
+
+// Load Ruler và gán sự kiện toggle
+$("#toggle-btn").load(`${basePath}/blog/components/ruler.html`, function () {
   let isBorderOn = false;
 
   $("#toggle-btn").on("click", function () {
@@ -10,6 +13,3 @@ $("#toggle-btn").load("/blog/components/ruler.html", function () {
     $("body").toggleClass("border", isBorderOn);
   });
 });
-const basePath = location.hostname === "localhost" ? "" : "/PersonalBlogWebsite";
-
-$("#Navbar").load(`${basePath}/blog/components/navbar.html`);
