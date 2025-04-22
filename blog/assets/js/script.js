@@ -1,11 +1,8 @@
-// Xác định base path: dùng cho cả localhost và GitHub Pages
-const basePath = location.hostname === "localhost" ? "" : "/PersonalBlogWebsite";
+// Load navbar
+$("#Navbar").load("/blog/components/navbar.html");
 
-// Load Navbar
-$("#Navbar").load(`${basePath}/blog/components/navbar.html`);
-
-// Load Ruler và gán sự kiện toggle
-$("#toggle-btn").load(`${basePath}/blog/components/ruler.html`, function () {
+// Load ruler
+$("#toggle-btn").load("/blog/components/ruler.html", function () {
   let isBorderOn = false;
 
   $("#toggle-btn").on("click", function () {
