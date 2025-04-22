@@ -4,10 +4,10 @@
   document.head.appendChild(base);
 const basePath = location.hostname === "127.0.0.1" ? "" : "/PersonalBlogWebsite";
 // Load navbar
-$("#Navbar").load(`${basePath}/components/navbar.html`);
+$("#Navbar").load(`${basePath}/blog/components/navbar.html`);
 
 // Load ruler
-$("#toggle-btn").load("./components/ruler.html", function () {
+$("#toggle-btn").load(`${basePath}/blog/components/ruler.html`, function () {
   let isBorderOn = false;
 
   $("#toggle-btn").on("click", function () {
