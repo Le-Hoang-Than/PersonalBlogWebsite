@@ -146,6 +146,8 @@ hr {
   z-index: 2;
   transition: transform 2s linear;
   border: none !important;
+  width: 40px;
+  height: 40px;
 }
 #toggle-btn img {
   border: none !important;
