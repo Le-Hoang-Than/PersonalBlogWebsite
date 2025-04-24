@@ -112,7 +112,7 @@ p {
   transition: transform $transition;
   &:hover {
     transform: translateY(3px);
-    text-shadow: 0 0 20px #5c829c;
+    text-shadow: 0 0 20px $color-sky-dust;
   }
 }
 
@@ -127,11 +127,11 @@ a {
   }
   &:hover {
     transform: translateY(3px);
-    color: $color-dark-variant;    
-    text-shadow: 0 0 20px #5c829c;
+    color: $color-sky-dust;    
+    text-shadow: 0 0 20px $color-snow-whisper;
   }
   &:active{
-    color: $color-dark-variant;    
+    color: $color-sky-dust;    
   }
 }
 
@@ -145,7 +145,7 @@ h5 {
 
   &:hover {
     transform: translateY(3px);
-    text-shadow: 0 0 20px #5c829c;
+    text-shadow: 0 0 20px $color-sky-dust;
   }
 }
 

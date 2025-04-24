@@ -74,7 +74,7 @@ p {
 }
 p:hover {
   transform: translateY(3px);
-  text-shadow: 0 0 20px #5c829c;
+  text-shadow: 0 0 20px #7ea4b8;
 }
 
 a {
@@ -89,11 +89,11 @@ a:visited {
 }
 a:hover {
   transform: translateY(3px);
-  color: #555555;
-  text-shadow: 0 0 20px #5c829c;
+  color: #7ea4b8;
+  text-shadow: 0 0 20px #dce3e8;
 }
 a:active {
-  color: #555555;
+  color: #7ea4b8;
 }
 
 h1,
@@ -110,7 +110,7 @@ h3:hover,
 h4:hover,
 h5:hover {
   transform: translateY(3px);
-  text-shadow: 0 0 20px #5c829c;
+  text-shadow: 0 0 20px #7ea4b8;
 }
 
 h1 {
