@@ -1,0 +1,18 @@
+@import '../../common/style.scss';
+.footer-container{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1rem;
+    background: $color-snow-whisper;
+    *{
+        flex: 1;
+    }
+
+    .newsletter-form{
+        input{
+            padding: 1rem;
+        }
+    }
+}

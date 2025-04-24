@@ -6,7 +6,7 @@
 
 window.addEventListener('scroll', () => {
   const sections = document.querySelectorAll("section");
-  const navLinks = document.querySelectorAll(".nav-list-bottom a");
+  const navLinks = document.querySelectorAll(".navbar-bottom-content a");
 
   let current = "";
 
@@ -23,7 +23,7 @@ window.addEventListener('scroll', () => {
     if (icon) {
       icon.classList.remove("active");
 
-      if (link.getAttribute("href") === `#${current}`) {
+      if (link.getAttribute("href") === `portfolio/#${current}`) {
         icon.classList.add("active");
       }
     }

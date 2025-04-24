@@ -5,7 +5,13 @@
 $color-black: #000;
 $color-white: #fff;
 $color-dark: #353535;
-$color-dark-variant: #555;
+$color-dark-variant: #555555;
+$color-ocean-deep: #5c829c;
+$color-sky-dust: #7ea4b8;
+$color-cloudy-haze: #a8bfcf;
+$color-frost-mist: #c8d3eb;
+$color-snow-whisper: #dce3e8;
+$color-daylight-glow: #e5ebf1;
 $transition: 0.5s ease;
 
 // =======================
@@ -67,6 +73,9 @@ $transition: 0.5s ease;
   user-select: none;
   -webkit-user-drag: none;
 }
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   background-color: $color-white;
@@ -97,10 +106,10 @@ img {
 // =======================
 
 p {
-  font-size: 1.5em;
-  line-height: 140%;
+  font-size: 1em;
+  line-height: 1.6;
   color: $color-dark-variant;
-  transition: transform 0.2s ease-in;
+  transition: transform $transition;
   &:hover {
     transform: translateY(3px);
     text-shadow: 0 0 20px #5c829c;
@@ -109,10 +118,20 @@ p {
 
 a {
   text-decoration: none;
-  transition: transform 0.2s ease-in;
+  transition: transform $transition;
+  &:link{
+    color: $color-dark-variant;
+  }
+  &:visited{
+    color: $color-dark-variant;    
+  }
   &:hover {
     transform: translateY(3px);
+    color: $color-dark-variant;    
     text-shadow: 0 0 20px #5c829c;
+  }
+  &:active{
+    color: $color-dark-variant;    
   }
 }
 
@@ -122,7 +141,7 @@ h3,
 h4,
 h5 {
   line-height: 120%;
-  transition: transform 0.2s ease-in;
+  transition: transform $transition;
 
   &:hover {
     transform: translateY(3px);
@@ -131,33 +150,28 @@ h5 {
 }
 
 h1 {
-  font-size: 3em;
+  font-size: 2em;
   color: $color-black;
 }
 
 h2 {
-  font-size: 1em;
+  font-size: 1.5em;
   color: $color-dark-variant;
 }
 
 h3 {
-  font-size: 26px;
+  font-size: 1.25rem;
   color: $color-black;
 }
 
 h4 {
-  font-size: 19px;
+  font-size: 1.1rem;
   color: $color-black;
 }
 
 h5 {
-  font-size: 18px;
+  font-size: 1rem;
   font-weight: 400;
-}
-
-small,
-li {
-  font-size: 16px;
 }
 
 hr {

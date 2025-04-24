@@ -1,0 +1,30 @@
+<section id="Feedback">
+    <div class="feedback-container">
+        <div class="feedback-header">
+            <p>Chúng tôi luôn sẵn sàng lắng nghe để cải thiện trải nghiệm của bạn.</p>
+            <h2>Góp ý & Phản hồi</h2>
+        </div>
+        <div class="feedback-content">
+            <form action="php/send-feedback.php" method="POST" enctype="multipart/form-data">
+                <div class="feedback-name">
+                    <label for="name">Họ và tên</label>
+                    <input type="text" name="name" placeholder="Tên của bạn (không bắt buộc)">
+                </div>
+                <div class="feedback-email">
+
+                    <label for="email">Email</label>
+                    <input type="email" name="email" placeholder="Email (nếu bạn muốn chúng tôi phản hồi)">
+                </div>
+                <div class="feedback-message">
+                    <label for="message">Tin nhắn</label>
+                    <textarea name="message" placeholder="Nội dung phản hồi" required></textarea>
+                </div>
+                <div class="feedback-control">
+                    <button class="btn" type="reset">Đặt lại</button>
+                    <button class="btn btn-dark" type="submit">Gửi phản hồi</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</section>

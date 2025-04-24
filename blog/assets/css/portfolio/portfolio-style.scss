@@ -252,7 +252,6 @@ hr {
     align-items: center;
     justify-content: center;
     background-color: #7ea4b8;
-
     h3 {
       font-weight: bolder;
       font-family: "DancingScript";
@@ -289,56 +288,57 @@ hr {
     }
   }
 
-  .nav-list-bottom {
-    position: fixed;
-    width: 100vw;
-    bottom: 0;
-    background-color: $color-white;
+}
+.navbar-bottom-container {
+  position: fixed;
+  width: 100vw;
+  bottom: 0;
+  z-index: 1000;
+  background-color: $color-white;
 
-    .nav-list-content {
+  .navbar-bottom-content {
+    display: flex;
+    justify-content: center;
+
+    ul {
+      width: 100%;
       display: flex;
-      justify-content: center;
+      align-items: center;
+      justify-content: space-evenly;
+      padding: 0.9vh;
+    }
 
-      ul {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-evenly;
-        padding: 0.9vh;
+    .icon {
+      display: flex;
+      align-items: center;
+      gap: 0.9vh;
+
+      img {
+        height: 3vh;
+        width: 3vh;
+        border-radius: 50%;
       }
 
-      .icon {
-        display: flex;
-        align-items: center;
-        gap: 0.9vh;
+      &.active {
+        background: linear-gradient(to left, #c8d3eb, white);
+        border: 1px solid #5c829c;
+        border-radius: 3vh;
+        padding: 0.3vh;
 
-        img {
-          height: 3vh;
-          width: 3vh;
-          border-radius: 50%;
-        }
-
-        &.active {
-          background: linear-gradient(to left, #c8d3eb, white);
-          border: 1px solid #5c829c;
-          border-radius: 3vh;
-          padding: 0.3vh;
-
-          span {
-            display: block;
-            font-weight: 900;
-            font-size: 3vw;
-            color: $color-black;
-            margin-right: 0.6vh;
-          }
+        span {
+          display: block;
+          font-weight: 900;
+          font-size: 3vw;
+          color: $color-black;
+          margin-right: 0.6vh;
         }
       }
+    }
 
-      span {
-        color: $color-dark;
-        font-size: 0vh;
-        transition: all 0.4s ease;
-      }
+    span {
+      color: $color-dark;
+      font-size: 0vh;
+      transition: all 0.4s ease;
     }
   }
 }

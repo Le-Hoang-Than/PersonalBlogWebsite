@@ -235,47 +235,49 @@ hr {
   color: #555;
   transition: 0.4s ease;
 }
-.nav-bar_container .nav-list-bottom {
+
+.navbar-bottom-container {
   position: fixed;
   width: 100vw;
   bottom: 0;
+  z-index: 1000;
   background-color: #fff;
 }
-.nav-bar_container .nav-list-bottom .nav-list-content {
+.navbar-bottom-container .navbar-bottom-content {
   display: flex;
   justify-content: center;
 }
-.nav-bar_container .nav-list-bottom .nav-list-content ul {
+.navbar-bottom-container .navbar-bottom-content ul {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   padding: 0.9vh;
 }
-.nav-bar_container .nav-list-bottom .nav-list-content .icon {
+.navbar-bottom-container .navbar-bottom-content .icon {
   display: flex;
   align-items: center;
   gap: 0.9vh;
 }
-.nav-bar_container .nav-list-bottom .nav-list-content .icon img {
+.navbar-bottom-container .navbar-bottom-content .icon img {
   height: 3vh;
   width: 3vh;
   border-radius: 50%;
 }
-.nav-bar_container .nav-list-bottom .nav-list-content .icon.active {
+.navbar-bottom-container .navbar-bottom-content .icon.active {
   background: linear-gradient(to left, #c8d3eb, white);
   border: 1px solid #5c829c;
   border-radius: 3vh;
   padding: 0.3vh;
 }
-.nav-bar_container .nav-list-bottom .nav-list-content .icon.active span {
+.navbar-bottom-container .navbar-bottom-content .icon.active span {
   display: block;
   font-weight: 900;
   font-size: 3vw;
   color: #000;
   margin-right: 0.6vh;
 }
-.nav-bar_container .nav-list-bottom .nav-list-content span {
+.navbar-bottom-container .navbar-bottom-content span {
   color: #353535;
   font-size: 0vh;
   transition: all 0.4s ease;
@@ -732,10 +734,10 @@ hr {
     padding: 0;
     margin: 0vh;
   }
-  #Nav-Bar .nav-list-top {
+  #Navbar .nav-list-top {
     display: none;
   }
-  #Nav-Bar .nav-list-content .icon img {
+  #Navbar-bottom .navbar-bottom-content .icon img {
     padding: 0.1rem;
   }
   .wrapper {
@@ -801,10 +803,10 @@ hr {
     padding: 0;
     margin: 0vh;
   }
-  #Nav-Bar .nav-list-top {
+  #Navbar .nav-list-top {
     display: none;
   }
-  #Nav-Bar .nav-list-content .icon img {
+  #Navbar-bottom .navbar-bottom-content .icon img {
     padding: 0.3rem;
   }
   #Header .header_container {
@@ -828,10 +830,10 @@ hr {
   #Services .services-list .service-describe {
     grid-template-columns: 3fr 1fr;
   }
-  .experience-content {
+  #Experience .experience-content {
     grid-template-columns: 1fr;
   }
-  .experience-box {
+  #Experience .experience-box {
     flex-direction: column;
   }
   #Projects .project-content {
@@ -856,7 +858,7 @@ hr {
   }
 }
 @media (min-width: 1025px) {
-  #Nav-Bar .nav-list-bottom {
+  #Navbar-bottom .navbar-bottom-container {
     display: none;
   }
 }

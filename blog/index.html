@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self'; font-src 'self'; connect-src 'self';"> -->
   <script>
     const isLocal = location.hostname === "127.0.0.1" || location.hostname === "localhost";
     document.write(`<base href="${isLocal ? "/blog/" : "/PersonalBlogWebsite/blog/"}">`);
@@ -11,13 +11,37 @@
   <title>Blog</title>
   <link rel="icon" type="image/x-icon" href="assets/icons/icons8-blog-100.ico">
   <link rel="stylesheet" href="assets/css/common/style.css">
-  <link rel="stylesheet" href="assets/css/components/navbar.css">
+  <link rel="stylesheet" href="assets/css/components/navbar/navbar.css">
+  <link rel="stylesheet" href="assets/css/components/footer/footer.css">
+  <link rel="stylesheet" href="assets/css/components/feedback/feedback.css">
+  <link rel="stylesheet" href="assets/css/home/home.css">
 </head>
+
 <body>
   <button id="toggle-btn"></button>
-  <div id="Navbar"></div>
+  <section id="Navbar"></section>
+  <section id="Home">
+    <div class="home-container">
+      <div class="slogan">
+        <h1 class="hero-title">"Không có hệ thống nào là tuyệt đối an toàn."</h1>
+        <p class="hero-subtitle">Chào mừng bạn đến với blog an ninh mạng cá nhân của tôi.</p>
+        <a href="#Feedback" class="btn btn-dark scroll-link">Khám phá Blog</a>
+      </div>
+      <div class="home-img">
+        <img src="assets/images/home-images/home-graphic.gif" alt="">
+      </div>
+      <div class="hero">
+        <p>
+          Blog này sẽ miễn phí mãi mãi, nhưng đổi lại, hãy gửi mình write-up khi bạn hoàn thành lab — cùng xây kho tài
+          liệu ‘made by hacker, for hacker’!#NoGatekeeping #HackerCommunity
+        </p>
+      </div>
+    </div>
+  </section>
+  <section id="Feedback"></section>
+  <section id="Footer"></section>
 </body>
 <script src="assets/js/jquery-3.7.1.min.js"></script>
 <script src="assets/js/script.js"></script>
+
 </html>
-  

@@ -1,19 +1,21 @@
 // Phone (dưới 600px)
 @media (max-width: 600px) {
-    //container
-    .wrapper,
-    #Header,
-    body {
-      padding: 0;
-      margin: 0vh;
-    }
-  
+  //container
+  .wrapper,
+  #Header,
+  body {
+    padding: 0;
+    margin: 0vh;
+  }
+
   // Begin Nav Bar Section
-  #Nav-Bar {
+  #Navbar {
     .nav-list-top {
       display: none;
     }
-    .nav-list-content .icon img {
+  }
+  #Navbar-bottom {
+    .navbar-bottom-content .icon img {
       padding: 0.1rem;
     }
   }
@@ -127,11 +129,13 @@
   }
 
   // Begin Nav Bar Section
-  #Nav-Bar {
+  #Navbar {
     .nav-list-top {
       display: none;
     }
-    .nav-list-content .icon img {
+  }
+  #Navbar-bottom {
+    .navbar-bottom-content .icon img {
       padding: 0.3rem;
     }
   }
@@ -139,58 +143,55 @@
   // End Nav Bar Section
 
   // Start Header Section
-  #Header{
-
-  .header_container {
-    flex-direction: column;
+  #Header {
+    .header_container {
+      flex-direction: column;
+    }
+    .header-back {
+      bottom: 0px;
+    }
   }
-  .header-back {
-    bottom: 0px;
-  }
-}
 
   // End Header Section
 
   // Start About Section
-  #About{
+  #About {
     .about-content {
       grid-template-columns: 1fr;
       .about-specialize {
         grid-template-columns: 1fr 1fr;
       }
     }
-
   }
   // End About Section
 
   // Begin Service Section
-  #Services{
+  #Services {
     .services-list {
       grid-template-columns: 1fr;
       h3 {
-          grid-column: span 1;
-        }
-        .service-describe {
-          grid-template-columns: 3fr 1fr;
-        }
+        grid-column: span 1;
+      }
+      .service-describe {
+        grid-template-columns: 3fr 1fr;
+      }
     }
   }
   // End Service Section
 
   // Begin Experience Section
-  
+  #Experience {
     .experience-content {
       grid-template-columns: 1fr;
     }
     .experience-box {
       flex-direction: column;
     }
-
+  }
   // End Experience Section
 
   // Begin Project Section
-  #Projects{
-
+  #Projects {
     .project-content {
       grid-template-columns: 1fr;
       gap: 3rem;
@@ -225,7 +226,7 @@
   // End Certificate Section
 
   // Start Contact Section
-  #Contact{
+  #Contact {
     .contact-items {
       grid-template-columns: 1fr;
     }
@@ -236,8 +237,8 @@
 // Desktop (trên 1024px)
 @media (min-width: 1025px) {
   // Begin Nav Bar Section
-  #Nav-Bar{
-    .nav-list-bottom {
+  #Navbar-bottom {
+    .navbar-bottom-container {
       display: none;
     }
   }
