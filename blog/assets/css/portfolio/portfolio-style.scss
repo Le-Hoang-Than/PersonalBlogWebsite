@@ -88,7 +88,7 @@ img {
   transition: 0.3s ease transform;
 
   &:hover {
-    transform: scale(1.1);
+    transform: scale(1.03);
   }
 }
 
@@ -885,13 +885,6 @@ hr {
     }
   }
 }
-
-@media (max-width: 600px) {
-  .nav-list-top {
-    display: none;
-  }
-}
-
 
 // =======================
 // Media Queries (Phone, Tablet, Desktop)

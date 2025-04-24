@@ -94,10 +94,10 @@ body {
 img {
   width: 100%;
   height: 100%;
-  transition: 0.3s ease transform;
+  transition: 0.5s ease transform;
 
   &:hover {
-    transform: scale(1.1);
+    transform: scale(1.03);
   }
 }
 
@@ -127,11 +127,11 @@ a {
   }
   &:hover {
     transform: translateY(3px);
-    color: $color-sky-dust;    
-    text-shadow: 0 0 20px $color-snow-whisper;
+    color: $color-ocean-deep;    
+    text-shadow: 0 0 20px $color-sky-dust;
   }
   &:active{
-    color: $color-sky-dust;    
+    color: $color-ocean-deep;    
   }
 }
 
@@ -233,5 +233,21 @@ hr {
     &:hover {
       background: $color-black;
     }
+  }
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #7ea4b8 !important;
+  width: fit-content;
+  h3 {
+    font-weight: bolder;
+    font-family: "DancingScript" !important;
+    font-size: 4vh;
+    color: #e5ebf1 !important;
+    letter-spacing: 0.5rem;
+    margin: 0 1rem;
   }
 }

@@ -1,0 +1,25 @@
+// Phone (dưới 600px)
+@media (max-width: 600px) {
+    #Home{
+        .home-container {
+            flex-direction: column;
+            .home-img{
+                width: 50vw;
+                align-self: center;
+            }
+        }
+    }
+}
+
+// Tablet (600px - 1024px)
+@media (min-width: 601px) and (max-width: 1024px) {
+    #Home{
+        .home-container {
+            flex-direction: column;
+            .home-img{
+                width: 50vw;
+                align-self: center;
+            }
+        }
+    }
+}
