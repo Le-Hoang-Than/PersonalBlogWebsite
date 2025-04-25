@@ -5,11 +5,7 @@
   z-index: 1000;
   .navbar-container {
     width: 100%;
-    // position: fixed;
-    // z-index: 1;
-    // top: 0;
-    // left: 0;
-    border-top: black 3px solid;
+    border-top: $color-black 3px solid;
     border-bottom: black 3px solid;
     box-shadow: 0 0 10px 3px white;
     display: flex;

@@ -1,0 +1,8 @@
+// import style chung
+@import './common/_style';
+// import các component
+@import './components/navbar/_navbar';
+@import './components/feedback/_feedback';
+@import './components/footer/_footer';
+//import các page
+@import './home/_home';

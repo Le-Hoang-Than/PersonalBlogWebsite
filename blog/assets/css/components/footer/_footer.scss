@@ -5,13 +5,11 @@
     .footer-container{
         display: grid;
         grid-template-columns: repeat(3,1fr);
-        flex-wrap: wrap;
         padding: 1rem;
         gap: 2rem;
         background: $color-dark;
         *{
             flex: 1 1 auto;
-            list-style: disc;
             list-style-position: inside;
             color: $color-white;
         }
@@ -22,5 +20,24 @@
             margin-bottom: 1rem;
             text-transform: uppercase;
         }
+        a{
+            text-decoration: underline;
+        }
+        .footer-nav{
+            ul{
+                li{
+                    list-style-type: square;
+                    margin: 3px;
+                }
+                ul{
+                    padding-left:1rem;
+                    li{
+                        list-style-type: circle;
+                        list-style-position: inside;
+                    }
+                }
+            }
+        }
     }
 }
+@import '_footer-responsive'
