@@ -456,6 +456,7 @@ hr {
   display: flex;
   width: 100%;
   justify-content: space-around;
+  align-items: flex-end;
 }
 #Navbar .navbar-container .navbar-menu li {
   position: relative;
@@ -473,6 +474,18 @@ hr {
   background-repeat: no-repeat;
   background-position: 0 100%;
   transition: background-size 0.5s ease;
+}
+#Navbar .navbar-container .navbar-menu li a.icon {
+  display: block;
+  height: 2vw;
+  width: 2vw;
+  overflow: hidden;
+  transform: rotate(-90deg);
+}
+#Navbar .navbar-container .navbar-menu li a.icon:hover img {
+  padding: 0;
+  margin: 0;
+  transform: rotate(90deg);
 }
 #Navbar .navbar-container .navbar-menu li:hover > a > span {
   background-size: 100% 1px;
