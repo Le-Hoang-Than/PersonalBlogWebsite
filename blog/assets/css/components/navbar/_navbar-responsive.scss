@@ -1,89 +1,144 @@
 @media (max-width: 600px) {
   #Navbar {
-    .navbar-menu {
-      display: none !important;
-    }
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    &.hide {
-      opacity: 0;
-      transform: translateY(-100%);
-      pointer-events: none;
+    .navbar-container {
+      .navbar-menu {
+        position: fixed;
+        // z-index: 1;
+        right: 0;
+        top: 0;
+        height: 100%;
+        padding: 1rem;
+        border-left: black 9px double;
+        gap: 1rem;
+        overflow-y: auto;
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-direction: column;
+        background-color: $color-white;
+        transform: translateX(100%);
+        transition: transform $transition;
+        &.open {
+          transform: none;
+        }
+        .drop-down {
+          position: relative;
+          .navbar-sub-menu {
+            position: static;
+            overflow: hidden; // THÊM overflow để max-height hoạt động
+            transform: none;
+            visibility: visible;
+            transition: height $transition, opacity $transition; // THÊM mượt max-height và opacity
+            transition: none;
+            width: 100%;
+            border: none;
+            grid-template-columns: 1fr;
+            display: none; // SỬA display: grid luôn, KHÔNG dùng display: none nữa
+            &.active {
+              visibility: visible;
+            }
+            li {
+              a {
+                border: none;
+              }
+            }
+            display: none;
+          }
+          &.active {
+            opacity: 1; // THÊM: hiện submenu
+            .navbar-sub-menu {
+              max-height: 100%; // THÊM: bung submenu ra
+              opacity: 1; // THÊM: hiện submenu
+              display: grid;
+            }
+            .icon {
+              transform: rotate(180deg);
+            }
+          }
+        }
+      }
     }
   }
+
 }
 
 // Tablet (600px - 1024px)
 @media (min-width: 601px) and (max-width: 1024px) {
   #Navbar {
-    .navbar-menu {
-      display: none !important;
-    }
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    &.hide {
-      opacity: 0;
-      transform: translateY(-100%);
-      pointer-events: none;
-    }
-  }
-}
-
-//Desktop
-@media (min-width: 1025px){
-  #Navbar{
-    .menu-btn{
-      display: none;
-    }
-    .navbar-menu{
-      > li:last-child{
-        a>span{
-          display: none;
+    .navbar-container {
+      .navbar-menu {
+        position: fixed;
+        // z-index: 1;
+        right: 0;
+        top: 0;
+        height: 100%;
+        padding: 1rem;
+        border-left: black 9px double;
+        gap: 1rem;
+        overflow-y: auto;
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-direction: column;
+        background-color: $color-white;
+        transform: translateX(100%);
+        transition: transform $transition;
+        &.open {
+          transform: none;
+        }
+        .drop-down {
+          position: relative;
+          .navbar-sub-menu {
+            position: static;
+            overflow: hidden; // THÊM overflow để max-height hoạt động
+            transform: none;
+            visibility: visible;
+            transition: height $transition, opacity $transition; // THÊM mượt max-height và opacity
+            transition: none;
+            width: 100%;
+            border: none;
+            grid-template-columns: 1fr;
+            display: none; // SỬA display: grid luôn, KHÔNG dùng display: none nữa
+            &.active {
+              visibility: visible;
+            }
+            li {
+              a {
+                border: none;
+              }
+            }
+            display: none;
+          }
+          &.active {
+            opacity: 1; // THÊM: hiện submenu
+            .navbar-sub-menu {
+              max-height: 100%; // THÊM: bung submenu ra
+              opacity: 1; // THÊM: hiện submenu
+              display: grid;
+            }
+            .icon {
+              transform: rotate(180deg);
+            }
+          }
         }
       }
     }
   }
 }
 
-// @media (min-width: 1025px) {
-//   #Navbar {
-//     .navbar-container {
-//       .navbar-menu {
-//         position: fixed;
-//         right: 0;
-//         top: 0;
-//         width: 50%;
-//         height: 100%;
-//         padding: 1rem;
-//         overflow-y: auto;
-//         justify-content: flex-start;
-//         align-items: flex-start;
-//         flex-direction: column;
-//         transform: translateX(100%);
-//         &.open {
-//           transform: none;
-//         }
-//         .drop-down {
-//           ul.navbar-sub-menu {
-//             position: static;
-//             opacity: 1;
-//             transform: none;
-//             visibility: visible;
-//             transition: none;
-//             grid-template-columns: 1fr;
-//             display: none;
-//           }
-//           .icon{
-//             &:hover{
-//               background-color: $color-daylight-glow;
-//             }
-//           }
-//           &.active{
-//             ul.navbar-sub-menu {
-
-//             display: block;
-//             }
-//           }
-//         }
-//       }
-//     }
-//   }
-// }
+//Desktop
+@media (min-width: 1025px) {
+  #Navbar {
+    .menu-btn {
+      display: none;
+    }
+    .item:last-child {
+      span {
+        display: none;
+      }
+    }
+    .drop-down:hover {
+      .icon {
+        transform: rotate(180deg);
+      }
+    }
+  }
+}

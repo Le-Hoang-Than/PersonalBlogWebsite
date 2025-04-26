@@ -1,5 +1,5 @@
-const isLocal = location.hostname === "127.0.0.1" || location.hostname === "localhost";
-document.write(`<base href="${isLocal ? "/blog/" : "/PersonalBlogWebsite/blog/"}">`);
+// const isLocal = location.hostname === "127.0.0.1" || location.hostname === "localhost";
+// document.write(`<base href="${isLocal ? "/blog/" : "/PersonalBlogWebsite/blog/"}">`);
 
 //Đặt title cho trang
 document.title = "Blog của Thân";
@@ -48,7 +48,6 @@ $(document).on("click", ".scroll-link", function (e) {
 $("#Navbar").load(`${basePath}components/navbar.html`);
 // Load footer
 $("#Footer").load(`${basePath}components/footer.html`);
-
 // Load feedbaccck
 $("#Feedback").load(`${basePath}components/feedback.html`);
 
