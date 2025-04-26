@@ -4,14 +4,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script>
-    const isLocal = location.hostname === "127.0.0.1" || location.hostname === "localhost";
-    document.write(`<base href="${isLocal ? "/blog/" : "/PersonalBlogWebsite/blog/"}">`);
-  </script>
+  <script type="module" src="assets/js/main.js" defer></script>
   <link rel="stylesheet" href="assets/css/main.css">
 </head>
 
-<body>
+<body>  
   <button id="toggle-btn"></button>
   <section id="Navbar"></section>
   <section id="Home">
@@ -43,7 +40,4 @@
   <section id="Feedback"></section>
   <section id="Footer"></section>
 </body>
-<script src="assets/js/jquery-3.7.1.min.js"></script>
-<script src="assets/js/script.js"></script>
-
 </html>

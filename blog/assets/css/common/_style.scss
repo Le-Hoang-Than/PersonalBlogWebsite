@@ -119,19 +119,19 @@ p {
 a {
   text-decoration: none;
   transition: transform $transition;
-  &:link{
+  &:link {
     color: $color-dark-variant;
   }
-  &:visited{
-    color: $color-dark-variant;    
+  &:visited {
+    color: $color-dark-variant;
   }
   &:hover {
     transform: translateY(3px);
-    color: $color-ocean-deep;    
+    color: $color-ocean-deep;
     text-shadow: 0 0 20px $color-sky-dust;
   }
-  &:active{
-    color: $color-ocean-deep;    
+  &:active {
+    color: $color-ocean-deep;
   }
 }
 
@@ -189,6 +189,7 @@ hr {
   background-color: transparent;
   cursor: pointer;
   position: fixed;
+  z-index: 1000;
   right: 5px;
   bottom: 5px;
   z-index: 2;
@@ -196,13 +197,14 @@ hr {
   border: none !important;
   width: 40px;
   height: 40px;
-  img{
+  img {
+    z-index: 1000;
     border: none !important;
   }
 }
 .border {
-    * {
-      border: 1px solid black !important;
+  * {
+    border: 1px solid black !important;
   }
 }
 .btn {
@@ -252,8 +254,51 @@ hr {
     letter-spacing: 0.5rem;
     margin: 0 1rem;
     transition: all $transition;
-    &:hover{
+    &:hover {
       transform: none !important;
+    }
+  }
+}
+
+#loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: $color-white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  z-index: 9999;
+  .loading-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    .loading-graphic {
+      height: 20rem;
+      width: 20rem;
+    }
+    .loading-title,.loading-sub-title {
+      color: $color-ocean-deep;
+    }
+    &.fade-out {
+      .loading-graphic {
+        transform: scale(0);
+        transition: transform  0.5s 0.3s ease-in-out;
+      }
+      .loading-title {
+        transform: scale(0);
+        transition: transform 0.3s 0.3s ease-in-out;
+      }
+      .loading-sub-title {
+        transform: scale(0);
+        transition: transform 0.3s ease-in-out;
+      }
     }
   }
 }

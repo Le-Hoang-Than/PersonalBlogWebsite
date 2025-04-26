@@ -150,6 +150,7 @@ hr {
   background-color: transparent;
   cursor: pointer;
   position: fixed;
+  z-index: 1000;
   right: 5px;
   bottom: 5px;
   z-index: 2;
@@ -159,6 +160,7 @@ hr {
   height: 40px;
 }
 #toggle-btn img {
+  z-index: 1000;
   border: none !important;
 }
 
@@ -214,6 +216,47 @@ hr {
 }
 .brand h3:hover {
   transform: none !important;
+}
+
+#loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  z-index: 9999;
+}
+#loading-screen .loading-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+#loading-screen .loading-content .loading-graphic {
+  height: 20rem;
+  width: 20rem;
+}
+#loading-screen .loading-content .loading-title, #loading-screen .loading-content .loading-sub-title {
+  color: #5c829c;
+}
+#loading-screen .loading-content.fade-out .loading-graphic {
+  transform: scale(0);
+  transition: transform 0.5s 0.3s ease-in-out;
+}
+#loading-screen .loading-content.fade-out .loading-title {
+  transform: scale(0);
+  transition: transform 0.3s 0.3s ease-in-out;
+}
+#loading-screen .loading-content.fade-out .loading-sub-title {
+  transform: scale(0);
+  transition: transform 0.3s ease-in-out;
 }
 
 @font-face {
@@ -368,6 +411,7 @@ hr {
   background-color: transparent;
   cursor: pointer;
   position: fixed;
+  z-index: 1000;
   right: 5px;
   bottom: 5px;
   z-index: 2;
@@ -377,6 +421,7 @@ hr {
   height: 40px;
 }
 #toggle-btn img {
+  z-index: 1000;
   border: none !important;
 }
 
@@ -434,10 +479,55 @@ hr {
   transform: none !important;
 }
 
+#loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  z-index: 9999;
+}
+#loading-screen .loading-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+#loading-screen .loading-content .loading-graphic {
+  height: 20rem;
+  width: 20rem;
+}
+#loading-screen .loading-content .loading-title, #loading-screen .loading-content .loading-sub-title {
+  color: #5c829c;
+}
+#loading-screen .loading-content.fade-out .loading-graphic {
+  transform: scale(0);
+  transition: transform 0.5s 0.3s ease-in-out;
+}
+#loading-screen .loading-content.fade-out .loading-title {
+  transform: scale(0);
+  transition: transform 0.3s 0.3s ease-in-out;
+}
+#loading-screen .loading-content.fade-out .loading-sub-title {
+  transform: scale(0);
+  transition: transform 0.3s ease-in-out;
+}
+
 #Navbar {
   position: sticky;
   top: 0;
   z-index: 1000;
+}
+#Navbar .icon {
+  height: 3vh;
+  width: 3vh;
 }
 #Navbar .navbar-container {
   width: 100%;
@@ -450,18 +540,24 @@ hr {
   background-color: white;
   padding: 0.3rem 1rem;
   gap: 1rem;
+  position: relative;
 }
 #Navbar .navbar-container .navbar-menu {
   flex: 1;
   display: flex;
+  flex-wrap: wrap;
   width: 100%;
   justify-content: space-around;
   align-items: flex-end;
+  background-color: #fff;
 }
 #Navbar .navbar-container .navbar-menu li {
   position: relative;
 }
 #Navbar .navbar-container .navbar-menu li a {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
   letter-spacing: 0.2rem;
   line-height: 140%;
   text-transform: uppercase;
@@ -475,20 +571,17 @@ hr {
   background-position: 0 100%;
   transition: background-size 0.5s ease;
 }
-#Navbar .navbar-container .navbar-menu li a.icon {
+#Navbar .navbar-container .navbar-menu li a .icon {
   display: block;
   height: 2vw;
   width: 2vw;
   overflow: hidden;
   transform: rotate(-90deg);
 }
-#Navbar .navbar-container .navbar-menu li a.icon:hover img {
+#Navbar .navbar-container .navbar-menu li a .icon:hover {
   padding: 0;
   margin: 0;
-  transform: rotate(90deg);
-}
-#Navbar .navbar-container .navbar-menu li:hover > a > span {
-  background-size: 100% 1px;
+  transform: rotate(0deg);
 }
 #Navbar .navbar-container .navbar-menu li .navbar-sub-menu {
   position: absolute;
@@ -516,11 +609,23 @@ hr {
 #Navbar .navbar-container .navbar-menu li .navbar-sub-menu a.btn:hover {
   background-color: #fff;
 }
-#Navbar .navbar-container .navbar-menu li:hover .navbar-sub-menu {
+#Navbar .navbar-container .navbar-menu li.drop-down .icon {
+  position: absolute;
+  right: -2vw;
+  top: calc(50% - 1.5vh);
+}
+#Navbar .navbar-container .navbar-menu li.drop-down:hover .navbar-sub-menu {
   opacity: 1;
   transform: none;
   visibility: visible;
   transition: all 0.5s ease;
+}
+#Navbar .navbar-container .menu-btn {
+  position: absolute;
+  right: 1rem;
+  align-self: center;
+  height: 3vh;
+  width: auto;
 }
 
 @media (max-width: 600px) {
@@ -549,6 +654,14 @@ hr {
     pointer-events: none;
   }
 }
+@media (min-width: 1025px) {
+  #Navbar .menu-btn {
+    display: none;
+  }
+  #Navbar .navbar-menu li:last-child a > span {
+    display: none;
+  }
+}
 @font-face {
   font-family: "Hack";
   src: url("../fonts/Hack/Hack-Regular.woff2") format("woff2"), url("../fonts/Hack/Hack-Regular.woff") format("woff");
@@ -701,6 +814,7 @@ hr {
   background-color: transparent;
   cursor: pointer;
   position: fixed;
+  z-index: 1000;
   right: 5px;
   bottom: 5px;
   z-index: 2;
@@ -710,6 +824,7 @@ hr {
   height: 40px;
 }
 #toggle-btn img {
+  z-index: 1000;
   border: none !important;
 }
 
@@ -765,6 +880,47 @@ hr {
 }
 .brand h3:hover {
   transform: none !important;
+}
+
+#loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  z-index: 9999;
+}
+#loading-screen .loading-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+#loading-screen .loading-content .loading-graphic {
+  height: 20rem;
+  width: 20rem;
+}
+#loading-screen .loading-content .loading-title, #loading-screen .loading-content .loading-sub-title {
+  color: #5c829c;
+}
+#loading-screen .loading-content.fade-out .loading-graphic {
+  transform: scale(0);
+  transition: transform 0.5s 0.3s ease-in-out;
+}
+#loading-screen .loading-content.fade-out .loading-title {
+  transform: scale(0);
+  transition: transform 0.3s 0.3s ease-in-out;
+}
+#loading-screen .loading-content.fade-out .loading-sub-title {
+  transform: scale(0);
+  transition: transform 0.3s ease-in-out;
 }
 
 .feedback-container {
@@ -952,6 +1108,7 @@ hr {
   background-color: transparent;
   cursor: pointer;
   position: fixed;
+  z-index: 1000;
   right: 5px;
   bottom: 5px;
   z-index: 2;
@@ -961,6 +1118,7 @@ hr {
   height: 40px;
 }
 #toggle-btn img {
+  z-index: 1000;
   border: none !important;
 }
 
@@ -1016,6 +1174,47 @@ hr {
 }
 .brand h3:hover {
   transform: none !important;
+}
+
+#loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  z-index: 9999;
+}
+#loading-screen .loading-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+#loading-screen .loading-content .loading-graphic {
+  height: 20rem;
+  width: 20rem;
+}
+#loading-screen .loading-content .loading-title, #loading-screen .loading-content .loading-sub-title {
+  color: #5c829c;
+}
+#loading-screen .loading-content.fade-out .loading-graphic {
+  transform: scale(0);
+  transition: transform 0.5s 0.3s ease-in-out;
+}
+#loading-screen .loading-content.fade-out .loading-title {
+  transform: scale(0);
+  transition: transform 0.3s 0.3s ease-in-out;
+}
+#loading-screen .loading-content.fade-out .loading-sub-title {
+  transform: scale(0);
+  transition: transform 0.3s ease-in-out;
 }
 
 #Footer {
@@ -1219,6 +1418,7 @@ hr {
   background-color: transparent;
   cursor: pointer;
   position: fixed;
+  z-index: 1000;
   right: 5px;
   bottom: 5px;
   z-index: 2;
@@ -1228,6 +1428,7 @@ hr {
   height: 40px;
 }
 #toggle-btn img {
+  z-index: 1000;
   border: none !important;
 }
 
@@ -1283,6 +1484,47 @@ hr {
 }
 .brand h3:hover {
   transform: none !important;
+}
+
+#loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  z-index: 9999;
+}
+#loading-screen .loading-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+#loading-screen .loading-content .loading-graphic {
+  height: 20rem;
+  width: 20rem;
+}
+#loading-screen .loading-content .loading-title, #loading-screen .loading-content .loading-sub-title {
+  color: #5c829c;
+}
+#loading-screen .loading-content.fade-out .loading-graphic {
+  transform: scale(0);
+  transition: transform 0.5s 0.3s ease-in-out;
+}
+#loading-screen .loading-content.fade-out .loading-title {
+  transform: scale(0);
+  transition: transform 0.3s 0.3s ease-in-out;
+}
+#loading-screen .loading-content.fade-out .loading-sub-title {
+  transform: scale(0);
+  transition: transform 0.3s ease-in-out;
 }
 
 .home-container {
