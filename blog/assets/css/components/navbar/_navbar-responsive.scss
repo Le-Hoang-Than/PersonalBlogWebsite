@@ -34,7 +34,7 @@
       display: none;
     }
     .navbar-menu{
-      li:last-child{
+      > li:last-child{
         a>span{
           display: none;
         }
