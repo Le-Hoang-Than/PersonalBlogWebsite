@@ -260,6 +260,13 @@ hr {
   transition: transform 0.3s ease-in-out;
 }
 
+.no-scroll {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+}
+
 @font-face {
   font-family: "Hack";
   src: url("../fonts/Hack/Hack-Regular.woff2") format("woff2"), url("../fonts/Hack/Hack-Regular.woff") format("woff");
@@ -522,15 +529,17 @@ hr {
   transition: transform 0.3s ease-in-out;
 }
 
+.no-scroll {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+}
+
 #Navbar {
   position: sticky;
-  top: 0;
   z-index: 1000;
-  transition: transform 0.5s ease, opacity 0.5s ease;
-}
-#Navbar.hide {
-  transform: translateY(-100%);
-  opacity: 0;
+  top: 0;
   transition: transform 0.5s ease, opacity 0.5s ease;
 }
 #Navbar .icon {
@@ -599,7 +608,7 @@ hr {
   position: absolute;
   top: 160%;
   left: 0;
-  z-index: 1;
+  z-index: 999;
   transform-origin: top;
   transform: scaleY(0);
   border: black 3px solid;
@@ -638,7 +647,6 @@ hr {
   align-self: center;
   height: 3vh;
   width: 3vh;
-  z-index: 1000;
 }
 
 @media (max-width: 600px) {
@@ -700,20 +708,28 @@ hr {
     position: fixed;
     right: 0;
     top: 0;
+    z-index: -1;
+    width: 70%;
     height: 100%;
     padding: 1rem;
+    padding-top: 8vh;
     border-left: black 9px double;
-    gap: 1rem;
     overflow-y: auto;
     justify-content: flex-start;
+    flex-wrap: nowrap;
     align-items: flex-start;
     flex-direction: column;
+    gap: 1rem;
     background-color: #fff;
     transform: translateX(100%);
     transition: transform 0.5s ease;
   }
   #Navbar .navbar-container .navbar-menu.open {
     transform: none;
+  }
+  #Navbar .navbar-container .navbar-menu li {
+    align-self: stretch;
+    border-bottom: 1px solid #000;
   }
   #Navbar .navbar-container .navbar-menu .drop-down {
     position: relative;
@@ -739,11 +755,16 @@ hr {
   }
   #Navbar .navbar-container .navbar-menu .drop-down.active {
     opacity: 1;
+    border-bottom: none;
   }
   #Navbar .navbar-container .navbar-menu .drop-down.active .navbar-sub-menu {
     max-height: 100%;
     opacity: 1;
     display: grid;
+    gap: 1rem;
+  }
+  #Navbar .navbar-container .navbar-menu .drop-down.active .navbar-sub-menu li {
+    margin: 1rem;
   }
   #Navbar .navbar-container .navbar-menu .drop-down.active .icon {
     transform: rotate(180deg);
@@ -1020,6 +1041,13 @@ hr {
 #loading-screen .loading-content.fade-out .loading-sub-title {
   transform: scale(0);
   transition: transform 0.3s ease-in-out;
+}
+
+.no-scroll {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
 }
 
 .feedback-container {
@@ -1315,6 +1343,13 @@ hr {
 #loading-screen .loading-content.fade-out .loading-sub-title {
   transform: scale(0);
   transition: transform 0.3s ease-in-out;
+}
+
+.no-scroll {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
 }
 
 #Footer {
@@ -1626,6 +1661,13 @@ hr {
 #loading-screen .loading-content.fade-out .loading-sub-title {
   transform: scale(0);
   transition: transform 0.3s ease-in-out;
+}
+
+.no-scroll {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
 }
 
 .home-container {

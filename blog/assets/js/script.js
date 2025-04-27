@@ -62,7 +62,7 @@ $("#Feedback").load(`${basePath}components/feedback.html`);
 // Loading Screen
 //
 
-const minimumLoadingTime = 500; // Ít nhất 500ms mới quyết định có hiện loading
+const minimumLoadingTime = 1500; // Ít nhất 500ms mới quyết định có hiện loading
 let loadingScreenDiv = null; // Ban đầu chưa tạo
 let loadingContentDiv = null;
 let loadingShown = false;

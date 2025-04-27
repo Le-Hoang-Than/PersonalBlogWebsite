@@ -67,22 +67,29 @@
     .navbar-container {
       .navbar-menu {
         position: fixed;
-        // z-index: 1;
         right: 0;
         top: 0;
+        z-index:-1;
+        width: 70%;
         height: 100%;
         padding: 1rem;
+        padding-top: 8vh;
         border-left: black 9px double;
-        gap: 1rem;
         overflow-y: auto;
         justify-content: flex-start;
+        flex-wrap: nowrap;
         align-items: flex-start;
         flex-direction: column;
+        gap: 1rem;
         background-color: $color-white;
         transform: translateX(100%);
         transition: transform $transition;
         &.open {
           transform: none;
+        }
+        li{
+          align-self: stretch;
+          border-bottom: 1px solid $color-black;
         }
         .drop-down {
           position: relative;
@@ -96,7 +103,7 @@
             width: 100%;
             border: none;
             grid-template-columns: 1fr;
-            display: none; // SỬA display: grid luôn, KHÔNG dùng display: none nữa
+            display: none;
             &.active {
               visibility: visible;
             }
@@ -109,10 +116,15 @@
           }
           &.active {
             opacity: 1; // THÊM: hiện submenu
+            border-bottom: none;
             .navbar-sub-menu {
               max-height: 100%; // THÊM: bung submenu ra
               opacity: 1; // THÊM: hiện submenu
               display: grid;
+              gap: 1rem;
+              li{
+                margin: 1rem;
+              }
             }
             .icon {
               transform: rotate(180deg);
