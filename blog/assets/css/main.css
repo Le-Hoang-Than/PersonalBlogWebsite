@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @font-face {
   font-family: "Hack";
   src: url("../fonts/Hack/Hack-Regular.woff2") format("woff2"), url("../fonts/Hack/Hack-Regular.woff") format("woff");
@@ -160,7 +161,6 @@ hr {
   height: 40px;
 }
 #toggle-btn img {
-  z-index: 1000;
   border: none !important;
 }
 
@@ -202,13 +202,13 @@ hr {
   justify-content: center;
   background-color: #7ea4b8 !important;
   width: fit-content;
-  padding-top: 0.5rem;
+  padding-top: 7px;
 }
 .brand h3 {
   font-weight: bolder;
   font-family: "DancingScript" !important;
   text-decoration: underline overline #5c829c 3px;
-  font-size: 4vh;
+  font-size: 3vh;
   color: #e5ebf1 !important;
   letter-spacing: 0.5rem;
   margin: 0 1rem;
@@ -429,7 +429,6 @@ hr {
   height: 40px;
 }
 #toggle-btn img {
-  z-index: 1000;
   border: none !important;
 }
 
@@ -471,13 +470,13 @@ hr {
   justify-content: center;
   background-color: #7ea4b8 !important;
   width: fit-content;
-  padding-top: 0.5rem;
+  padding-top: 7px;
 }
 .brand h3 {
   font-weight: bolder;
   font-family: "DancingScript" !important;
   text-decoration: underline overline #5c829c 3px;
-  font-size: 4vh;
+  font-size: 3vh;
   color: #e5ebf1 !important;
   letter-spacing: 0.5rem;
   margin: 0 1rem;
@@ -537,10 +536,26 @@ hr {
 }
 
 #Navbar {
-  position: sticky;
-  z-index: 1000;
+  position: fixed;
   top: 0;
-  transition: transform 0.5s ease, opacity 0.5s ease;
+  left: 0;
+  width: 100%;
+  padding: 3px 0;
+  background-color: #fff;
+  box-shadow: 0 0 10px 3px #fff;
+  border-top: #000 3px solid;
+  border-bottom: black 3px solid;
+  z-index: 1000;
+  transition: transform 0.5s ease;
+  transform: translateY(0%);
+  /* Lớp để ẩn navbar */
+  /* Khi navbar xuất hiện lại */
+}
+#Navbar.hide-navbar {
+  transform: translateY(-1000%); /* Di chuyển navbar lên ngoài màn hình */
+}
+#Navbar.show-navbar {
+  transform: translateY(0); /* Đưa navbar về vị trí ban đầu */
 }
 #Navbar .icon {
   height: 3vh;
@@ -548,55 +563,36 @@ hr {
   transition: transform 0.3s ease;
   transform: rotate(0deg);
 }
-#Navbar .item {
+#Navbar .navbar-link {
   display: flex;
   align-items: center;
   gap: 1rem;
 }
-#Navbar .item span:hover, #Navbar .item a:hover {
+#Navbar .navbar-link span:hover,
+#Navbar .navbar-link a:hover, #Navbar .navbar-link:hover {
   transform: none !important;
 }
-#Navbar .item .icon {
-  margin: 0;
-  padding: 0;
-  right: calc(-3vh - 0.3rem);
-  top: calc(50% - 1.5vh);
-}
 #Navbar .navbar-container {
-  width: 100%;
-  border-top: #000 3px solid;
-  border-bottom: black 3px solid;
-  box-shadow: 0 0 10px 3px #fff;
   display: flex;
+  align-items: center;
   justify-content: center;
-  align-items: flex-end;
-  background-color: white;
-  padding: 0.3rem 1rem;
-  position: relative;
 }
-#Navbar .navbar-container .navbar-menu {
-  flex: 1;
+#Navbar .navbar-container .navbar-header {
+  align-self: center;
   display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  justify-content: space-around;
-  transition: transform 0.5s ease;
-  background-color: #fff;
-  width: 100%;
+  justify-content: space-between;
+  align-items: center;
 }
-#Navbar .navbar-container .navbar-menu li {
-  position: relative;
-}
-#Navbar .navbar-container .navbar-menu li:hover span {
+#Navbar .navbar-container .navbar-list li:hover span {
   background-size: 100% 2px;
 }
-#Navbar .navbar-container .navbar-menu li a {
+#Navbar .navbar-container .navbar-list li a {
   letter-spacing: 0.2rem;
   text-transform: uppercase;
   font-weight: 900;
   color: #353535;
 }
-#Navbar .navbar-container .navbar-menu li a span {
+#Navbar .navbar-container .navbar-list li a span {
   font-size: 3vh;
   background-image: linear-gradient(#000, #000);
   background-size: 0% 2px;
@@ -604,181 +600,195 @@ hr {
   background-position: 0 100%;
   transition: background-size 0.3s ease-in-out;
 }
-#Navbar .navbar-container .navbar-menu li .navbar-sub-menu {
-  position: absolute;
-  top: 160%;
-  left: 0;
-  z-index: 999;
-  transform-origin: top;
-  transform: scaleY(0);
-  border: black 3px solid;
-  border-bottom: black 9px double;
-  border-top: black 9px double;
-  background: #fff;
-  transition: all 0.5s ease;
-  overflow: hidden;
-  visibility: hidden;
-  opacity: 0;
-  width: max-content;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  padding: 1rem;
-  gap: 1rem;
-}
-#Navbar .navbar-container .navbar-menu li .navbar-sub-menu span {
+#Navbar .navbar-container .navbar-list li .navbar-submenu span {
   background-image: linear-gradient(#000, #000);
   background-size: 0% 2px;
   background-repeat: no-repeat;
   background-position: 0 100%;
   transition: background-size 0.5s ease;
 }
-#Navbar .navbar-container .navbar-menu li .navbar-sub-menu li:hover span {
+#Navbar .navbar-container .navbar-list li .navbar-submenu li:hover span {
   background-size: 100% 2px;
 }
-#Navbar .navbar-container .navbar-menu li.drop-down:hover .navbar-sub-menu {
-  opacity: 1;
-  transform: none;
-  visibility: visible;
-  transition: all 0.5s ease;
-}
-#Navbar .navbar-container .menu-btn {
+#Navbar .navbar-container .navbar-btn {
   position: absolute;
-  right: 1vw;
-  align-self: center;
+  top: calc(50% - 1.5vh);
+  right: 1vh;
   height: 3vh;
   width: 3vh;
 }
-
-@media (max-width: 600px) {
-  #Navbar .navbar-container .navbar-menu {
-    position: fixed;
-    right: 0;
-    top: 0;
-    height: 100%;
-    padding: 1rem;
-    border-left: black 9px double;
-    gap: 1rem;
-    overflow-y: auto;
-    justify-content: flex-start;
-    align-items: flex-start;
-    flex-direction: column;
-    background-color: #fff;
-    transform: translateX(100%);
-    transition: transform 0.5s ease;
-  }
-  #Navbar .navbar-container .navbar-menu.open {
-    transform: none;
-  }
-  #Navbar .navbar-container .navbar-menu .drop-down {
-    position: relative;
-  }
-  #Navbar .navbar-container .navbar-menu .drop-down .navbar-sub-menu {
-    position: static;
-    overflow: hidden;
-    transform: none;
-    visibility: visible;
-    transition: height 0.5s ease, opacity 0.5s ease;
-    transition: none;
-    width: 100%;
-    border: none;
-    grid-template-columns: 1fr;
-    display: none;
-    display: none;
-  }
-  #Navbar .navbar-container .navbar-menu .drop-down .navbar-sub-menu.active {
-    visibility: visible;
-  }
-  #Navbar .navbar-container .navbar-menu .drop-down .navbar-sub-menu li a {
-    border: none;
-  }
-  #Navbar .navbar-container .navbar-menu .drop-down.active {
-    opacity: 1;
-  }
-  #Navbar .navbar-container .navbar-menu .drop-down.active .navbar-sub-menu {
-    max-height: 100%;
-    opacity: 1;
-    display: grid;
-  }
-  #Navbar .navbar-container .navbar-menu .drop-down.active .icon {
-    transform: rotate(180deg);
-  }
+#Navbar .navbar-container .navbar-btn .navbar-btn-close,
+#Navbar .navbar-container .navbar-btn .navbar-btn-menu {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  cursor: pointer;
+  transition: opacity 0.1s, transform 0.4s;
 }
-@media (min-width: 601px) and (max-width: 1024px) {
-  #Navbar .navbar-container .navbar-menu {
-    position: fixed;
-    right: 0;
-    top: 0;
-    z-index: -1;
-    width: 70%;
-    height: 100%;
-    padding: 1rem;
-    padding-top: 8vh;
-    border-left: black 9px double;
-    overflow-y: auto;
-    justify-content: flex-start;
-    flex-wrap: nowrap;
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 1rem;
+#Navbar .navbar-container .navbar-btn .navbar-btn-close {
+  opacity: 0;
+}
+#Navbar .navbar-container .navbar-btn.show-icon .navbar-btn-menu {
+  opacity: 0;
+  transform: rotate(90deg);
+}
+#Navbar .navbar-container .navbar-btn.show-icon .navbar-btn-close {
+  opacity: 1;
+  transform: rotate(90deg);
+}
+
+@media (max-width: 600px), (min-width: 601px) and (max-width: 1024px) {
+  #Navbar {
     background-color: #fff;
-    transform: translateX(100%);
+  }
+  #Navbar .navbar-menu {
+    position: absolute;
+    left: 0;
+    top: calc(100% + 3px);
+    height: 100vh;
+    z-index: 1000;
+    width: 100%;
+    background-color: #fff;
+    overflow-y: auto;
+    pointer-events: none;
+    opacity: 0;
+    transition: top 0.4s, opacity 0.3s;
+  }
+  #Navbar .navbar-menu.show-menu {
+    opacity: 1;
+    pointer-events: initial;
+  }
+  #Navbar .navbar-menu .navbar-list {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    padding-bottom: 20vh;
+    gap: 0.5rem;
+    background-color: #fff;
+  }
+  #Navbar .navbar-menu .navbar-list .navbar-link {
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #5c829c;
+    transition: background-color 0.5s ease;
+  }
+  #Navbar .navbar-menu .navbar-list .dropdown {
+    cursor: pointer;
+  }
+  #Navbar .navbar-menu .navbar-list .dropdown.active .navbar-link .dropdown-arrow {
+    transform: rotate(180deg);
     transition: transform 0.5s ease;
   }
-  #Navbar .navbar-container .navbar-menu.open {
-    transform: none;
+  #Navbar .navbar-menu .navbar-list .dropdown.active .navbar-submenu {
+    max-height: 100vh;
+    transition: max-height 0.5s ease-out;
   }
-  #Navbar .navbar-container .navbar-menu li {
-    align-self: stretch;
-    border-bottom: 1px solid #000;
+  #Navbar .navbar-menu .navbar-list .dropdown .dropdown-arrow {
+    transition: transform 0.4s ease;
   }
-  #Navbar .navbar-container .navbar-menu .drop-down {
-    position: relative;
-  }
-  #Navbar .navbar-container .navbar-menu .drop-down .navbar-sub-menu {
-    position: static;
+  #Navbar .navbar-menu .navbar-list .dropdown .navbar-submenu {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    max-height: 0;
     overflow: hidden;
-    transform: none;
-    visibility: visible;
-    transition: height 0.5s ease, opacity 0.5s ease;
-    transition: none;
+    transition: max-height 0.5s ease-out;
+  }
+  #Navbar .navbar-menu .navbar-list .dropdown .navbar-submenu li {
+    display: flex;
+    align-items: center;
+    column-gap: 1rem;
+    transition: background-color 0.5s ease;
+  }
+  #Navbar .navbar-menu .navbar-list .dropdown .navbar-submenu li a {
     width: 100%;
-    border: none;
-    grid-template-columns: 1fr;
-    display: none;
-    display: none;
-  }
-  #Navbar .navbar-container .navbar-menu .drop-down .navbar-sub-menu.active {
-    visibility: visible;
-  }
-  #Navbar .navbar-container .navbar-menu .drop-down .navbar-sub-menu li a {
-    border: none;
-  }
-  #Navbar .navbar-container .navbar-menu .drop-down.active {
-    opacity: 1;
-    border-bottom: none;
-  }
-  #Navbar .navbar-container .navbar-menu .drop-down.active .navbar-sub-menu {
-    max-height: 100%;
-    opacity: 1;
-    display: grid;
-    gap: 1rem;
-  }
-  #Navbar .navbar-container .navbar-menu .drop-down.active .navbar-sub-menu li {
-    margin: 1rem;
-  }
-  #Navbar .navbar-container .navbar-menu .drop-down.active .icon {
-    transform: rotate(180deg);
+    padding-left: 2rem;
   }
 }
 @media (min-width: 1025px) {
-  #Navbar .menu-btn {
+  #Navbar .navbar-btn {
     display: none;
   }
-  #Navbar .item:last-child span {
+  #Navbar .navbar-link:last-child > a > span {
     display: none;
   }
-  #Navbar .drop-down:hover .icon {
-    transform: rotate(180deg);
+  #Navbar .navbar-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    background-color: white;
+    padding: 0.3rem 1rem;
+    position: relative;
+  }
+  #Navbar .navbar-container .navbar-menu {
+    flex: 1;
+  }
+  #Navbar .navbar-container .navbar-menu .navbar-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-around;
+    transition: transform 0.5s ease;
+    background-color: #fff;
+    width: 100%;
+  }
+  #Navbar .navbar-container .navbar-menu .navbar-list li {
+    position: relative;
+  }
+  #Navbar .navbar-container .navbar-menu .navbar-list li:hover span {
+    background-size: 100% 2px;
+  }
+  #Navbar .navbar-container .navbar-menu .navbar-list li.dropdown:hover .navbar-submenu {
+    opacity: 1;
+    transform: none;
+    visibility: visible;
+    transition: all 0.5s ease;
+  }
+  #Navbar .navbar-container .navbar-menu .navbar-list li a {
+    letter-spacing: 0.2rem;
+    text-transform: uppercase;
+    font-weight: 900;
+    color: #353535;
+  }
+  #Navbar .navbar-container .navbar-menu .navbar-list li a span {
+    font-size: 3vh;
+    background-image: linear-gradient(#000, #000);
+    background-size: 0% 2px;
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    transition: background-size 0.3s ease-in-out;
+  }
+  #Navbar .navbar-container .navbar-menu .navbar-list li .navbar-submenu {
+    background: #fff;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: absolute;
+    top: 160%;
+    left: 0;
+    border: black 3px solid;
+    border-bottom: black 9px double;
+    border-top: black 9px double;
+    transition: all 0.5s ease;
+    transform-origin: top;
+    transform: scaleY(0);
+    overflow: hidden;
+    visibility: hidden;
+    opacity: 0;
+    width: max-content;
+    padding: 1rem;
+    gap: 1rem;
+  }
+  #Navbar .navbar-container .navbar-menu .navbar-list li .navbar-submenu span {
+    background-image: linear-gradient(#000, #000);
+    background-size: 0% 2px;
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    transition: background-size 0.5s ease;
+  }
+  #Navbar .navbar-container .navbar-menu .navbar-list li .navbar-submenu li:hover span {
+    background-size: 100% 2px;
   }
 }
 @font-face {
@@ -943,7 +953,6 @@ hr {
   height: 40px;
 }
 #toggle-btn img {
-  z-index: 1000;
   border: none !important;
 }
 
@@ -985,13 +994,13 @@ hr {
   justify-content: center;
   background-color: #7ea4b8 !important;
   width: fit-content;
-  padding-top: 0.5rem;
+  padding-top: 7px;
 }
 .brand h3 {
   font-weight: bolder;
   font-family: "DancingScript" !important;
   text-decoration: underline overline #5c829c 3px;
-  font-size: 4vh;
+  font-size: 3vh;
   color: #e5ebf1 !important;
   letter-spacing: 0.5rem;
   margin: 0 1rem;
@@ -1245,7 +1254,6 @@ hr {
   height: 40px;
 }
 #toggle-btn img {
-  z-index: 1000;
   border: none !important;
 }
 
@@ -1287,13 +1295,13 @@ hr {
   justify-content: center;
   background-color: #7ea4b8 !important;
   width: fit-content;
-  padding-top: 0.5rem;
+  padding-top: 7px;
 }
 .brand h3 {
   font-weight: bolder;
   font-family: "DancingScript" !important;
   text-decoration: underline overline #5c829c 3px;
-  font-size: 4vh;
+  font-size: 3vh;
   color: #e5ebf1 !important;
   letter-spacing: 0.5rem;
   margin: 0 1rem;
@@ -1563,7 +1571,6 @@ hr {
   height: 40px;
 }
 #toggle-btn img {
-  z-index: 1000;
   border: none !important;
 }
 
@@ -1605,13 +1612,13 @@ hr {
   justify-content: center;
   background-color: #7ea4b8 !important;
   width: fit-content;
-  padding-top: 0.5rem;
+  padding-top: 7px;
 }
 .brand h3 {
   font-weight: bolder;
   font-family: "DancingScript" !important;
   text-decoration: underline overline #5c829c 3px;
-  font-size: 4vh;
+  font-size: 3vh;
   color: #e5ebf1 !important;
   letter-spacing: 0.5rem;
   margin: 0 1rem;

@@ -1,53 +1,53 @@
 @import "../../common/style.scss";
 #Navbar {
-  position: sticky;
-  z-index: 1000;
+  position: fixed;
   top: 0;
-  transition: transform 0.5s ease, opacity 0.5s ease;
+  left: 0;
+  width: 100%;
+  padding: 3px 0;
+  background-color: $color-white;
+  box-shadow: 0 0 10px 3px $color-white;
+  border-top: $color-black 3px solid;
+  border-bottom: black 3px solid;
+  z-index: 1000;
+  transition: transform 0.5s ease;
+  transform: translateY(0%);
+  /* Lớp để ẩn navbar */
+  &.hide-navbar {
+    transform: translateY(-1000%); /* Di chuyển navbar lên ngoài màn hình */
+  }
+  /* Khi navbar xuất hiện lại */
+  &.show-navbar {
+    transform: translateY(0); /* Đưa navbar về vị trí ban đầu */
+  }
   .icon {
     height: 3vh;
     width: 3vh;
     transition: transform 0.3s ease;
     transform: rotate(0deg);
-    }
-  .item {
+  }
+  .navbar-link {
     display: flex;
     align-items: center;
     gap: 1rem;
-    span:hover, a:hover{
+    span:hover,
+    a:hover,
+    &:hover {
       transform: none !important;
     }
-    .icon{
-      margin: 0;
-      padding: 0;
-      right:calc( -3vh - 0.3rem);
-      top:calc(50% - 1.5vh)
-    }
   }
-
   .navbar-container {
-    width: 100%;
-    border-top: $color-black 3px solid;
-    border-bottom: black 3px solid;
-    box-shadow: 0 0 10px 3px $color-white;
     display: flex;
+    align-items: center;
     justify-content: center;
-    align-items: flex-end;
-    background-color: white;
-    padding: 0.3rem 1rem;
-    // gap: 1rem;
-    position: relative;
-    .navbar-menu {
-      flex: 1;
+    .navbar-header {
+      align-self: center;
       display: flex;
-      flex-wrap: wrap;
-      align-items: flex-end;
-      justify-content: space-around;
-      transition: transform 0.5s ease;
-      background-color: $color-white;
-      width: 100%;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .navbar-list {
       li {
-        position: relative;
         &:hover {
           span {
             background-size: 100% 2px;
@@ -55,7 +55,6 @@
         }
         a {
           letter-spacing: 0.2rem;
-          // line-height: 140%;
           text-transform: uppercase;
           font-weight: 900;
           color: $color-dark;
@@ -68,26 +67,7 @@
             transition: background-size 0.3s ease-in-out;
           }
         }
-        .navbar-sub-menu {
-          position: absolute;
-          top: 160%;
-          left: 0;
-          z-index: 999;
-          transform-origin: top;
-          transform: scaleY(0);
-          border: black 3px solid;
-          border-bottom: black 9px double;
-          border-top: black 9px double;
-          background: $color-white;
-          transition: all $transition;
-          overflow: hidden;
-          visibility: hidden;
-          opacity: 0;
-          width: max-content;
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          padding: 1rem;
-          gap: 1rem;
+        .navbar-submenu {
           span {
             background-image: linear-gradient($color-black, $color-black);
             background-size: 0% 2px;
@@ -98,28 +78,39 @@
           li:hover {
             span {
               background-size: 100% 2px;
-            }      
-          }
-        }
-        &.drop-down {
-          &:hover {
-            .navbar-sub-menu {
-              opacity: 1;
-              transform: none;
-              visibility: visible;
-              transition: all $transition;
             }
           }
         }
       }
     }
-    .menu-btn {
+    .navbar-btn {
       position: absolute;
-      right: 1vw;
-      align-self: center;
+      top: calc(50% - 1.5vh);
+      right: 1vh;
       height: 3vh;
       width: 3vh;
+      .navbar-btn-close,
+      .navbar-btn-menu {
+        position: absolute;
+        inset: 0;
+        margin: auto;
+        cursor: pointer;
+        transition: opacity 0.1s, transform 0.4s;
+      }
+      .navbar-btn-close {
+        opacity: 0;
+      }
+      &.show-icon {
+        .navbar-btn-menu {
+          opacity: 0;
+          transform: rotate(90deg);
+        }
+        .navbar-btn-close {
+          opacity: 1;
+          transform: rotate(90deg);
+        }
+      }
     }
-  }  
+  }
 }
 @import "_navbar-responsive";
