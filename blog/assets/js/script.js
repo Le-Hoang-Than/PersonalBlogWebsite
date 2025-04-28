@@ -1,18 +1,24 @@
 // const isLocal = location.hostname === "127.0.0.1" || location.hostname === "localhost";
 // document.write(`<base href="${isLocal ? "/blog/" : "/PersonalBlogWebsite/blog/"}">`);
 
-//Đặt title cho trang
-document.title = "Blog của Thân";
-//Đặt favicon
-const link = document.createElement("link");
-link.rel = "favicon/icon";
-link.href = "assets/icons/icons8-blog-100.ico";
-document.head.appendChild(link);
 
 const basePath =
   location.hostname === "127.0.0.1" || location.hostname === "localhost"
     ? "/blog/"
     : "/PersonalBlogWebsite/blog/";
+
+
+
+
+
+
+    //Đặt title cho trang
+document.title = "Blog của Thân";
+//Đặt favicon
+const link = document.createElement("link");
+link.rel = "favicon/icon";
+link.href = `${basePath}assets/icons/icons8-blog-100.ico`;
+document.head.appendChild(link);
 $("#toggle-btn").load(`${basePath}components/ruler.html`, function () {
   let isBorderOn = false;
 
@@ -77,7 +83,7 @@ function createLoadingScreen() {
 
   const logoImage = document.createElement("img");
   logoImage.className = "loading-graphic"; // gấp đôi chữ d
-  logoImage.src = `${basePath}assets/images/load/loading-graphic.gif`;
+  logoImage.src = `${basePath}assets/images/load/loading-graphic.png`;
   logoImage.alt = "Logo";
   loadingContentDiv.appendChild(logoImage);
 

@@ -1,14 +1,12 @@
 @import "../../common/style.scss";
 #Navbar {
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   width: 100%;
   padding: 3px 0;
   background-color: $color-white;
   box-shadow: 0 0 10px 3px $color-white;
-  border-top: $color-black 3px solid;
-  border-bottom: black 3px solid;
   z-index: 1000;
   transition: transform 0.5s ease;
   transform: translateY(0%);
@@ -40,6 +38,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    border-top: $color-black 3px solid;
+    border-bottom: black 3px solid;  
     .navbar-header {
       align-self: center;
       display: flex;

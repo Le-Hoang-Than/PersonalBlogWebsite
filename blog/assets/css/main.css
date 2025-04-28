@@ -536,15 +536,13 @@ hr {
 }
 
 #Navbar {
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   width: 100%;
   padding: 3px 0;
   background-color: #fff;
   box-shadow: 0 0 10px 3px #fff;
-  border-top: #000 3px solid;
-  border-bottom: black 3px solid;
   z-index: 1000;
   transition: transform 0.5s ease;
   transform: translateY(0%);
@@ -576,6 +574,8 @@ hr {
   display: flex;
   align-items: center;
   justify-content: center;
+  border-top: #000 3px solid;
+  border-bottom: black 3px solid;
 }
 #Navbar .navbar-container .navbar-header {
   align-self: center;
