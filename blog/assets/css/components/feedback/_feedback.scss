@@ -1,15 +1,30 @@
-@import '../../common/style.scss';
 .feedback-container{
     display: flex;
-    align-items: center;
     flex-direction: column;
     .feedback-header{
         text-align: center;
     }
     .feedback-content{
         width: 100%;
+        display: flex;
+        .feedback-aside{
+            flex: 1;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+
+            .feedback-image{
+                img{
+                    max-height: 50vh;
+                    max-width: 50vh;
+                }
+            }
+        }
         form{
-            // background-color: $color-ocean-deep;
+            flex: 1;
+            background-color: $color-white;
             padding: 1rem;
             display: flex;
             flex-direction: column;
@@ -20,18 +35,52 @@
                     padding-bottom: 0.5rem;
                 }
                 input, textarea{
-                    &::placeholder{
-                        color: $color-black;
-                    }
                     resize: vertical;
                     width: 100%;
                     background-color: $color-snow-whisper;
                     box-shadow: inset 1px 1px 5px 0.5px $color-dark-variant;
                     padding: 1rem;
                     border-radius: 4px;
+                    transition: all $transition;
+                    &:hover{
+                        filter: brightness(110%);
+                    }
+                }
+                input[type="file"]
+                {
+                    padding: 0rem;
+                    text-align: center;
+                    pointer-events: none;
+                    overflow: hidden;
+                    &::file-selector-button{
+                        pointer-events: all;
+                        @extend .btn, .btn-dark;
+                        padding: 1rem;
+                        border-radius: 0;
+                        font-size: 13px;
+                        font-weight: normal;
+                        margin-right: 1rem;
+                    }
+                }
+                .error-message {
+                    color: #ff0000;
+                    line-height: 2rem;
+                    font-size: 13px;
+                    display: block;
                 }
                 
+            }
+            .feedback-control{
+                display: flex;
+                justify-content: space-evenly;
+                label{
+                    text-align: center;
+                }
+                input[type="file"]{
+                    display: none;
+                }
             }
         }
     }
 }
+@import '_feedback-responsive'

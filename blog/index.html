@@ -4,41 +4,154 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script type="module" src="assets/js/main.js" defer></script>
-  <link rel="stylesheet" href="assets/css/main.css">
-  <link rel="icon" type="image/x-icon" href="assets/icons/icons8-blog-100.ico">
+  <script type="module" src="/PersonalBlogWebsite/blog/assets/js/main.js" defer></script>
+  <link rel="stylesheet" href="/PersonalBlogWebsite/blog/assets/css/main.css">
+  <link rel="icon" type="image/x-icon" href="/PersonalBlogWebsite/blog/assets/icons/icons8-blog-100.ico">
+  <title>Blog của Thân</title>
 </head>
 
-<body>  
+<body>
   <button id="toggle-btn"></button>
-  <section id="Navbar"></section>
-  <section id="Home">
-    <div class="home-container">
-      <div class="hero">
-        <div class="hero-slogan">
-          <h1>"Không có hệ thống nào là tuyệt đối an toàn"</h1>
-          <p>— Bruce Schneier</p>
+  <section id="Layout">
+
+    <section id="Navbar"></section>
+
+    <section id="Home"></section>
+    <section id="Main-wrapper">
+      <section id="Categories">
+        Đây là Categories
+        <div class="categories-container">
         </div>
-        <p class="hero-subtitle">Blog này là nhật ký hành trình <b>'mò mẫm'</b> an ninh mạng của mình —
-          nơi mọi lab, tài liệu đều được <b>chia sẻ miễn phí</b> và <b>không rào cản</b>.</p>
-        <hr>
-        <p>
-          Mỗi <b>write-up</b> của bạn
-          đều là <b>viên gạch quý</b> để cùng xây dựng blog này!
-          Đừng ngại gửi cho mình<br>— kể cả nếu nó chỉ là 1 dòng phản hồi!
-        </p>
-        <p class="hashtag">
-          <span >#NoGatekeeping</span>
-          <span >#MadeByHackerForHacker</span>
-        </p>
-        <a href="#Feedback" class="btn btn-dark scroll-link">Khám phá Blog</a>
-      </div>
-      <div class="home-img">
-        <img src="assets/images/home-images/home-graphic.png" alt="">
-      </div>
-    </div>
+      </section>
+
+      <section id="Page">
+        <div id="Main-content">
+          <div class="main-content-container">
+            <div class="section">
+              <div class="section-header">
+                <p class="heading-p">Ghi lại Hành Trình Theo Đuổi Đam Mê</p>
+                <h1 class="heading">Blog Của Thân</h1>
+              </div>
+              <div class="section-content">
+                <div class="section-left">
+                  <div class="section-img">
+                    <img src="/PersonalBlogWebsite/blog/assets/images/home-images/Ava.jpg" alt="">
+                  </div>
+                </div>
+                <div class="section-right">
+                  <p>Đây là nơi tôi ghi lại quá trình học tập và thử nghiệm của mình trong lĩnh vực an ninh mạng, máy
+                    tính
+                    và toán ứng dụng. Nội dung chủ yếu phục vụ cho mục đích ghi chú cá nhân, nhưng có thể hữu ích nếu
+                    bạn
+                    quan tâm đến những vấn đề tương tự.</p>
+                </div>
+              </div>
+            </div>
+            <hr>
+            <div class="section">
+              <div class="section-header">
+                <p class="heading-p">Tôi Ghi Lại Tất Cả Những Gì Mình Đang Học
+                  Trong</p>
+                <h1 class="heading">Nội Dung Chính</h1>
+              </div>
+              <div class="section-content">
+                <ol>
+                  <p>
+                    Blog tập trung vào các chủ đề thuộc lĩnh vực kỹ thuật máy tính và bảo mật, bao gồm:
+                  </p>
+                  <li>
+                    <b>CTF và khai thác lỗ hổng:</b> Ghi lại quá trình phân tích, giải bài và học kỹ thuật thông qua các
+                    cuộc
+                    thi thực hành.
+                  </li>
+                  <li>
+                    <b>Mạng máy tính và hệ điều hành:</b> Tổng hợp kiến thức nền tảng và các tình huống thực tế liên
+                    quan đến giao thức, quyền truy cập, memory layout...
+                  </li>
+                  <li>
+                    <b>Mã hóa và bảo mật:</b> Các bài viết về thuật toán mã hóa, cơ chế bảo mật hệ thống, và nhận xét về
+                    các công cụ phân tích, kiểm thử.
+                  </li>
+                  <li>
+                    <b>Toán học ứng dụng:</b> Chủ yếu liên quan đến giải tích và đại số tuyến tính – nền tảng toán học
+                    thường xuyên xuất hiện trong các bài toán kỹ thuật.
+                  </li>
+                  <li>
+                    <b>Tự phát triển công cụ:</b> Ghi chú và chia sẻ các script, công cụ nhỏ tôi tự viết để hỗ trợ công
+                    việc học tập và kiểm thử.
+                  </li>
+                </ol>
+              </div>
+            </div>
+            <hr>
+            <div class="section">
+              <div class="section-header">
+                <p class="heading-p">Trước Khi Bạn Đọc Tiếp, Có Vài Điều Bạn Cần</p>
+                <h1 class="heading">Lưu ý</h1>
+              </div>
+              <div class="section-content">
+                <ol>
+                  <p>Một vài lưu ý về blog của tôi:</p>
+                  <li>
+                    <b>Kiến thức trong blog mang tính cá nhân.</b> Được tích lũy từ việc tự học, thực hành, đọc tài liệu
+                    và quan sát – có thể chưa đầy đủ hoặc sai sót.
+                  </li>
+                  <li>
+                    <b>Một số nội dung có thể chưa chính xác tuyệt đối.</b> Đặc biệt với các chủ đề phức tạp như mật mã
+                    học hoặc hệ điều hành.
+                  </li>
+                  <li>
+                    <b>Bài viết trình bày ưu tiên tính dễ hiểu.</b> Tôi không luôn luoon tuân thủ thuật ngữ học thuật,
+                    mà sử dụng cách diễn đạt phù hợp với góc nhìn người đang học.
+                  </li>
+                </ol>
+              </div>
+            </div>
+            <hr>
+
+            <div class="section">
+              <div class="section-header">
+                <p class="heading-p">Việc Ghi Lại Kiến Thức Đã Học Chính Là</p>
+                <h1 class="heading">Mục Đích Của Blog</h1>
+              </div>
+              <div class="section-content">
+                <p>
+                  Tôi viết blog này để ghi lại hành trình học tập – không phải để trình bày kiến thức đã hoàn chỉnh, mà
+                  để phản ánh quá trình hình thành chúng.
+                </p>
+                <p>
+                  Việc học kỹ thuật, đặc biệt là các lĩnh vực như bảo mật, toán ứng dụng hay hệ thống, không phải lúc
+                  nào cũng tuyến tính và rõ ràng. Blog này là cách tôi sắp xếp lại những gì đã đọc, đã làm, và đã hiểu –
+                  hoặc chưa hiểu.
+                </p>
+              </div>
+            </div>
+            <hr>
+            <div class="section">
+              <div class="section-header">
+                <p class="heading-p">Đôi lời từ tôi</p>
+                <h1 class="heading">Tác Giả</h1>
+              </div>
+              <div class="section-content">
+                <p><i>Nếu blog này có thể giúp ai đó hiểu rõ hơn một khái niệm, tránh được một lỗi thường gặp, hoặc đơn
+                    giản là thấy mình không đơn độc trong việc học, thì đó đã là một giá trị ngoài dự kiến.</i></p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <section id="Aside">
+          Đây là aside
+        </section>
+      </section>
+
+    </section>
+
+    <section id="Feedback"></section>
+    <section id="Footer"></section>
   </section>
-  <section id="Feedback"></section>
-  <section id="Footer"></section>
+
 </body>
+
 </html>

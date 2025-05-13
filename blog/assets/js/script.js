@@ -1,25 +1,4 @@
-// const isLocal = location.hostname === "127.0.0.1" || location.hostname === "localhost";
-// document.write(`<base href="${isLocal ? "/blog/" : "/PersonalBlogWebsite/blog/"}">`);
-
-
-const basePath =
-  location.hostname === "127.0.0.1" || location.hostname === "localhost"
-    ? "/blog/"
-    : "/PersonalBlogWebsite/blog/";
-
-
-
-
-
-
-    //Đặt title cho trang
-document.title = "Blog của Thân";
-//Đặt favicon
-const link = document.createElement("link");
-link.rel = "favicon/icon";
-link.href = `${basePath}assets/icons/icons8-blog-100.ico`;
-document.head.appendChild(link);
-$("#toggle-btn").load(`${basePath}components/ruler.html`, function () {
+$("#toggle-btn").load(`/PersonalBlogWebsite/blog/components/ruler.html`, function () {
   let isBorderOn = false;
 
   $("#toggle-btn").on("click", function () {
@@ -28,34 +7,17 @@ $("#toggle-btn").load(`${basePath}components/ruler.html`, function () {
   });
 });
 
-//Cuộn trang thật smooth vì có sử dụng thẻ base nên phải script
-$(document).on("click", ".scroll-link", function (e) {
-  e.preventDefault();
 
-  const targetId = this.hash.slice(1);
-  const target = document.getElementById(targetId);
-
-  if (target) {
-    const offset = $(target).offset().top;
-
-    $("html, body").animate(
-      {
-        scrollTop: offset,
-      },
-      600
-    ); // thời gian scroll: 600ms
-
-    // Cập nhật URL nếu muốn
-    history.pushState(null, null, this.hash);
-  }
-});
-
+//Load page-updating
+$("#Page-updating").load(`/PersonalBlogWebsite/blog/components/updating-page.html`);
 // Load navbar
-$("#Navbar").load(`${basePath}components/navbar.html`);
+$("#Navbar").load(`/PersonalBlogWebsite/blog/components/navbar.html`);
 // Load footer
-$("#Footer").load(`${basePath}components/footer.html`);
+$("#Footer").load(`/PersonalBlogWebsite/blog/components/footer.html`);
 // Load feedbaccck
-$("#Feedback").load(`${basePath}components/feedback.html`);
+$("#Feedback").load(`/PersonalBlogWebsite/blog/components/feedback.html`);
+//Load home page
+$("#Home").load(`/PersonalBlogWebsite/blog/components/home.html`);
 
 
 
@@ -67,8 +29,7 @@ $("#Feedback").load(`${basePath}components/feedback.html`);
 //
 // Loading Screen
 //
-
-const minimumLoadingTime = 1500; // Ít nhất 500ms mới quyết định có hiện loading
+const minimumLoadingTime = 800; // Ít nhất 800ms mới quyết định có hiện loading
 let loadingScreenDiv = null; // Ban đầu chưa tạo
 let loadingContentDiv = null;
 let loadingShown = false;
@@ -81,12 +42,6 @@ function createLoadingScreen() {
   loadingContentDiv = document.createElement("div");
   loadingContentDiv.className = "loading-content";
 
-  const logoImage = document.createElement("img");
-  logoImage.className = "loading-graphic"; // gấp đôi chữ d
-  logoImage.src = `${basePath}assets/images/load/loading-graphic.png`;
-  logoImage.alt = "Logo";
-  loadingContentDiv.appendChild(logoImage);
-
   const loadingTitle = document.createElement("h1");
   loadingTitle.className = "loading-title";
   loadingTitle.innerText = "Chào mừng bạn đến với Blog";
@@ -96,6 +51,12 @@ function createLoadingScreen() {
   loadingSubTitle.className = "loading-sub-title";
   loadingSubTitle.innerText = "Chúng tôi đang chuẩn bị nội dung cho bạn!";
   loadingContentDiv.appendChild(loadingSubTitle);
+
+  const logoImage = document.createElement("img");
+  logoImage.className = "loading-graphic"; // gấp đôi chữ d
+  logoImage.src = `/PersonalBlogWebsite/blog/assets/images/load/loading-graphic.png`;
+  logoImage.alt = "Logo";
+  loadingContentDiv.appendChild(logoImage);
 
   loadingScreenDiv.appendChild(loadingContentDiv);
 }

@@ -1,0 +1,238 @@
+// =======================
+// Variables
+// =======================
+
+$color-black: #000;
+$color-white: #fff;
+$color-dark: #353535;
+$color-dark-variant: #555555;
+$color-ocean-deep: #5c829c;
+$color-sky-dust: #7ea4b8;
+$color-cloudy-haze: #a8bfcf;
+$color-frost-mist: #c8d3eb;
+$color-snow-whisper: #dce3e8;
+$color-daylight-glow: #e5ebf1;
+$transition: 0.5s ease;
+
+// =======================
+// Font Face
+// =======================
+
+@font-face {
+  font-family: "Hack";
+  src: url("/PersonalBlogWebsite/blog/assets/fonts/Hack/Hack-Regular.woff2")
+      format("woff2"),
+    url("/PersonalBlogWebsite/blog/assets/fonts/Hack/Hack-Regular.woff")
+      format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Hack";
+  src: url("/PersonalBlogWebsite/blog/assets/fonts/Hack/Hack-Bold.woff2")
+      format("woff2"),
+    url("/PersonalBlogWebsite/blog/assets/fonts/Hack/Hack-Bold.woff")
+      format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Hack";
+  src: url("/PersonalBlogWebsite/blog/assets/fonts/Hack/Hack-Italic.woff2")
+      format("woff2"),
+    url("/PersonalBlogWebsite/blog/assets/fonts/Hack/Hack-Italic.woff")
+      format("woff");
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Hack";
+  src: url("/PersonalBlogWebsite/blog/assets/fonts/Hack/Hack-BoldItalic.woff2")
+      format("woff2"),
+    url("/PersonalBlogWebsite/blog/assets/fonts/Hack/Hack-BoldItalic.woff")
+      format("woff");
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "DancingScript";
+  src: url("/PersonalBlogWebsite/blog/assets/fonts/DancingScript/DancingScript-Regular.ttf");
+}
+
+// =======================
+// Reset + Global
+// =======================
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+  font-family: "Hack", sans-serif;
+  border: none;
+  outline: none;
+  scroll-behavior: smooth;
+  letter-spacing: 0.4px;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  // background-color: $color-black;
+  // color: $color-white;
+  &::-webkit-scrollbar {
+    width: 6px;
+    background-color: $color-black;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background-color: $color-white;
+  }
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  transition: 0.5s ease transform;
+}
+
+// =======================
+// Typography
+// =======================
+
+p {
+  font-size: 1em;
+  line-height: 1.6;
+  color: $color-white;
+  transition: transform $transition;
+}
+
+a {
+  text-decoration: none;
+  transition: transform $transition;
+  &:link {
+    color: $color-white;
+  }
+  &:visited {
+    color: $color-white;
+  }
+  &:hover {
+    color: $color-white;
+  }
+  &:active {
+    color: $color-white;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  line-height: 120%;
+  transition: transform $transition;
+}
+
+h1 {
+  font-size: 2em;
+  color: $color-black;
+}
+
+h2 {
+  font-size: 1.5em;
+  color: $color-black;
+}
+
+h3 {
+  font-size: 1.25rem;
+  color: $color-black;
+}
+
+h4 {
+  font-size: 1.1rem;
+  color: $color-black;
+}
+
+h5 {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+hr {
+  border: 0;
+  margin: 0.5rem 0;
+  height: 2px;
+  border-radius: 50%;
+  background: linear-gradient(90deg, $color-white, $color-dark, $color-white);
+}
+// =======================
+// Components
+// =======================
+.brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #7ea4b8 !important;
+  width: fit-content;
+  padding-top: 7px;
+  h3 {
+    font-weight: bolder;
+    font-family: "DancingScript" !important;
+    text-decoration: underline overline $color-ocean-deep 3px;
+    font-size: 3vh;
+    color: #e5ebf1 !important;
+    letter-spacing: 0.5rem;
+    margin: 0 1rem;
+    transition: all $transition;
+  }
+}
+#Main-content {
+  // padding: 0.5rem;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  // gap: 0.5rem;
+  background-color: $color-white;
+  // background: url(/PersonalBlogWebsite/admin/dashboard/assets/images/background-admin.png);
+  > :last-child {
+    flex: 1 1 100%;
+    // border-radius: 0.5rem;
+    // border: 1px solid $color-white;
+  }
+}
+@media (max-width: 600px), (min-width: 601px) and (max-width: 1024px) {
+  #Main-content {
+    > :last-child {
+      border: none;
+    }
+  }
+}
+@media (max-width: 1024px) {
+  body::before {
+      content: "Truy cập trang quản trị từ thiết bị có màn hình lớn (desktop).";
+      display: block;
+      position: fixed;
+      z-index: 9999;
+      background: white;
+      color: red;
+      width: 100vw;
+      height: 100vh;
+      text-align: center;
+      display: flex;      
+      justify-content: center;
+      align-items: center;
+font-size: 1.5rem;
+  }
+  #Sidebar, main, header, footer {
+      display: none !important;
+  }
+}

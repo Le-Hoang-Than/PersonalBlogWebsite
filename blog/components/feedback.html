@@ -1,30 +1,46 @@
 <section id="Feedback">
     <div class="feedback-container">
         <div class="feedback-header">
-            <p>Chúng tôi luôn sẵn sàng lắng nghe để cải thiện trải nghiệm của bạn.</p>
-            <h2>Góp ý & Phản hồi</h2>
+            <p>Chúng Tôi Trân Trọng Mọi Ý Kiến</p>
+            <h1>Phản Hồi</h1>
         </div>
         <div class="feedback-content">
-            <form action="php/send-feedback.php" method="POST" enctype="multipart/form-data">
+            <div class="feedback-aside">
+                <p>
+                    Mỗi <b>write-up</b> của bạn
+                    đều là <b>viên gạch quý</b> để cùng xây dựng blog này!
+                    Đừng ngại gửi cho mình.</p>
+                <p>— kể cả nếu nó chỉ là 1 dòng phản hồi!
+                </p>
+                <div class="feedback-image">
+                    <img src="/PersonalBlogWebsite/blog/assets/images/feedback/feedback-graphic.png" alt="Minh họa Feedback">
+                </div>
+            </div>
+            <form id="Feedback-form" method="POST" enctype="multipart/form-data">
                 <div class="feedback-name">
                     <label for="name">Họ và tên</label>
-                    <input type="text" name="name" placeholder="Tên của bạn (không bắt buộc)">
+                    <input type="text" name="name" placeholder="Tên của bạn" required>
                 </div>
                 <div class="feedback-email">
-
                     <label for="email">Email</label>
-                    <input type="email" name="email" placeholder="Email (nếu bạn muốn chúng tôi phản hồi)">
+                    <input id="email-field" onkeyup="validateEmail()" type="email" name="email" placeholder="Email" required>
+                    <span class="error-message"></span>
                 </div>
                 <div class="feedback-message">
                     <label for="message">Tin nhắn</label>
                     <textarea name="message" placeholder="Nội dung phản hồi" required></textarea>
                 </div>
+                <div class="feedback-file">
+                    <label for="upload-file">File đính kèm</label>
+                    <input type="file" name="upload-file" >
+                </div>
                 <div class="feedback-control">
                     <button class="btn" type="reset">Đặt lại</button>
                     <button class="btn btn-dark" type="submit">Gửi phản hồi</button>
                 </div>
-
             </form>
+
         </div>
     </div>
 </section>
+<script src="/PersonalBlogWebsite/blog/assets/js/components/feedback.js"></script>

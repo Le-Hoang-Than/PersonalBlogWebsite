@@ -1,12 +1,11 @@
-@import "../../common/style.scss";
+// @import "../../common/_style";
 #Navbar {
   position: sticky;
   top: 0;
   left: 0;
   width: 100%;
-  padding: 3px 0;
   background-color: $color-white;
-  box-shadow: 0 0 10px 3px $color-white;
+  box-shadow: 0 -5px 10px 1px $color-dark-variant;
   z-index: 1000;
   transition: transform 0.5s ease;
   transform: translateY(0%);
@@ -39,7 +38,9 @@
     align-items: center;
     justify-content: center;
     border-top: $color-black 3px solid;
-    border-bottom: black 3px solid;  
+    border-bottom: black 9px double;  
+    background-color: white;
+    padding: 3px 1rem;
     .navbar-header {
       align-self: center;
       display: flex;
@@ -60,7 +61,7 @@
           color: $color-dark;
           span {
             font-size: 3vh;
-            background-image: linear-gradient($color-black, $color-black);
+            background-image: linear-gradient($color-ocean-deep, $color-ocean-deep);
             background-size: 0% 2px;
             background-repeat: no-repeat;
             background-position: 0 100%;
@@ -69,7 +70,7 @@
         }
         .navbar-submenu {
           span {
-            background-image: linear-gradient($color-black, $color-black);
+            background-image: linear-gradient($color-ocean-deep, $color-ocean-deep);
             background-size: 0% 2px;
             background-repeat: no-repeat;
             background-position: 0 100%;

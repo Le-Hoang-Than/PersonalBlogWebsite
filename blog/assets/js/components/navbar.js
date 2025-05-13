@@ -48,3 +48,43 @@ dropdowns.forEach((dropdown) => {
     dropdown.classList.toggle("active"); // Toggle mở/đóng
   });
 });
+$(document).ready(function () {
+    $.ajax({
+        url: '/PersonalBlogWebsite/blog/php/api/get_navbar_categories.php',
+        method: 'GET',
+        dataType: 'json',
+        success: function (data) {
+            const container = $('#navbar-dynamic-menu');
+            container.empty();
+
+            data.forEach(cat => {
+                if (cat.children && cat.children.length > 0) {
+                    // Nếu có subcategory
+                    let submenu = '<ul class="navbar-submenu">';
+                    cat.children.forEach(sub => {
+                        submenu += `<li><a class="navbar-link" href="/PersonalBlogWebsite/blog/${cat.slug}/${sub.slug}/"><span>${sub.name}</span></a></li>`;
+                    });
+                    submenu += '</ul>';
+
+                    container.append(`
+                        <li class="dropdown">
+                            <div class="navbar-link">
+                                <a href="/PersonalBlogWebsite/blog/${cat.slug}/"><span>${cat.name}</span></a>
+                                <img class="icon dropdown-arrow" src="/PersonalBlogWebsite/blog/assets/images/navbar-images/icons8-arrow-50.png" alt="menu">
+                            </div>
+                            ${submenu}
+                        </li>
+                    `);
+                } else {
+                    // Nếu không có subcategory
+                    container.append(`
+                        <li><a class="navbar-link" href="/PersonalBlogWebsite/blog/${cat.slug}/"><span>${cat.name}</span></a></li>
+                    `);
+                }
+            });
+        },
+        error: function (err) {
+            console.error("Không thể tải navbar:", err);
+        }
+    });
+});

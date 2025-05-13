@@ -1,0 +1,114 @@
+/* Main Layout */
+.container {
+    flex: 1;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+}
+
+/* Nút chính */
+.btn {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin-bottom: 1.5rem;
+    background-color: $color-dark;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background: $color-ocean-deep;
+}
+
+.btn-primary:hover {
+    filter: brightness(130%);
+}
+
+/* Bảng danh mục */
+.category-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.category-table th,
+.category-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid $color-sky-dust;
+    // border: 1px solid $color-black;
+}
+
+.category-table th {
+    background: $color-ocean-deep;
+    color: $color-white;    
+    font-weight: 500;
+}
+.category-table tr:hover {
+    background: #f8f9fa;
+}
+
+/* Cột hiển thị */
+.category-table td:nth-child(4) {
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+/* Nút hành động */
+.btn-sm {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+    margin-right: 0.5rem;
+    border-radius: 4px;
+}
+
+.btn-danger {
+    background: #e74c3c;
+    
+    border: 1px solid #c0392b;
+}
+
+.btn-danger:hover {
+    background: #c0392b;
+}
+
+
+/* Hiệu ứng khi xác nhận xóa */
+.confirm-box {
+    background: #fff3cd;
+    padding: 0.5rem;
+    border-radius: 4px;
+    margin-top: 0.5rem;
+    display: none;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.error-message {
+    color: red;
+    margin-bottom: 20px;
+}

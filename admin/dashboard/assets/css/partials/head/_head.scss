@@ -1,0 +1,122 @@
+// @import "../../common/_style";
+#Navbar {
+    position: sticky;
+    top: 0;
+    left: 0;
+    height: calc(3vh + 2rem);
+    // width: 100%;
+    background-color: $color-white;
+    // border: 1px solid $color-black;
+    border-radius: 0.5rem;
+    margin: 0.5rem 0.5rem 0 0.5rem;
+    z-index: 1000;
+
+    transition: transform 0.5s ease;
+    transform: translateY(0%);
+    /* Lớp để ẩn navbar */
+    &.hide-navbar {
+      transform: translateY(-1000%); /* Di chuyển navbar lên ngoài màn hình */
+    }
+    /* Khi navbar xuất hiện lại */
+    &.show-navbar {
+      transform: translateY(0); /* Đưa navbar về vị trí ban đầu */
+    }
+    .icon {
+      height: 3vh;
+      width: 3vh;
+      transition: transform 0.3s ease;
+      transform: rotate(0deg);
+    }
+    .navbar-link {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      span:hover,
+      a:hover,
+      &:hover {
+        transform: none !important;
+      }
+    }
+    .navbar-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    //   border-top: $color-black 3px solid;
+    //   border-bottom: black 9px double;  
+    //   background-color: white;
+      padding: 3px 1rem;
+      .navbar-header {
+        align-self: center;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .navbar-list {
+        li {
+          &:hover {
+            span {
+              background-size: 100% 2px;
+            }
+          }
+          a {
+            letter-spacing: 0.2rem;
+            text-transform: uppercase;
+            font-weight: 900;
+            color: $color-dark;
+            span {
+              font-size: 3vh;
+              background-image: linear-gradient($color-ocean-deep, $color-ocean-deep);
+              background-size: 0% 2px;
+              background-repeat: no-repeat;
+              background-position: 0 100%;
+              transition: background-size 0.3s ease-in-out;
+            }
+          }
+          .navbar-submenu {
+            span {
+              background-image: linear-gradient($color-ocean-deep, $color-ocean-deep);
+              background-size: 0% 2px;
+              background-repeat: no-repeat;
+              background-position: 0 100%;
+              transition: background-size $transition;
+            }
+            li:hover {
+              span {
+                background-size: 100% 2px;
+              }
+            }
+          }
+        }
+      }
+      .navbar-btn {
+        position: absolute;
+        top: calc(50% - 1.5vh);
+        right: 1vh;
+        height: 3vh;
+        width: 3vh;
+        .navbar-btn-close,
+        .navbar-btn-menu {
+          position: absolute;
+          inset: 0;
+          margin: auto;
+          cursor: pointer;
+          transition: opacity 0.1s, transform 0.4s;
+        }
+        .navbar-btn-close {
+          opacity: 0;
+        }
+        &.show-icon {
+          .navbar-btn-menu {
+            opacity: 0;
+            transform: rotate(90deg);
+          }
+          .navbar-btn-close {
+            opacity: 1;
+            transform: rotate(90deg);
+          }
+        }
+      }
+    }
+  }
+  @import "_head-responsive";
+  

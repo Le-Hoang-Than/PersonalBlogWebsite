@@ -1,0 +1,112 @@
+#Dashboard-background {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  // min-height: 80vh;
+  padding: 1rem;
+  transition: all $transition;
+  .welcome{
+    text-align: center;
+    text-shadow: 0 0 20px $color-white;
+    padding: 0.5rem;
+    position: relative;
+    border: 1px solid $color-white;
+    text-transform: uppercase;
+    box-shadow: 0 0 30px 3px rgb(0, 179, 255);
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 64, 255, 0.1);
+      background-color:  rgba(0, 179, 255,.7) !important;
+
+      z-index: 1;
+    }
+    &::after {
+      content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+      z-index: 0;
+    }
+    h3, h1, hr {
+      position: relative;
+      z-index: 3; // Đảm bảo nội dung nằm trên cùng
+    }
+    h1{
+      font-size: 2rem;
+    }
+
+  }
+  &.robot-arm {
+    position: relative;
+    // height: 100%;
+    width: auto;
+    // background: url(/PersonalBlogWebsite/admin/dashboard/assets/images/background-admin.png);
+    // background: radial-gradient(circle, $color-white 10%,$color-dark-variant,$color-dark,$color-black);
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    transition: all $transition;
+  
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      z-index: 10;
+      height: 100%;
+      width: 100%;
+      background-size: cover;
+      background-repeat: no-repeat;
+      transform-origin: center;
+      animation-duration: 2s;
+      animation-iteration-count: infinite;
+      animation-timing-function: ease-in-out;
+    }
+    &::before {
+      background-image: url(/PersonalBlogWebsite/admin/dashboard/assets/images/arm-robot-top.png);
+      top: -5px;
+      left: -5px;
+      background-position: center;
+      animation-name: armUpper;
+      transform-origin: bottom center;
+    }
+    &::after {
+      background-image: url(/PersonalBlogWebsite/admin/dashboard/assets/images/arm-robot-bottom.png);
+      bottom: -5px;
+      right: -5px;
+      background-position: center;
+      animation-name: armLower;
+      transform-origin: top center;
+    }
+  }
+}
+
+@keyframes armUpper {
+  0%,
+  100% {
+    transform: rotate(1deg) translateX(-5px) translateY(-5px);
+  }
+
+  50% {
+    transform: rotate(0deg) translateX(5px) translateY(5px);
+  }
+}
+
+@keyframes armLower {
+  0%,
+  100% {
+    transform: rotate(-1deg) translateX(5px) translateY(5px);
+  }
+
+  50% {
+    transform: rotate(0deg) translateX(-5px) translateY(-5px);
+  }
+}

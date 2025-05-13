@@ -4,43 +4,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script>
-    const isLocal = location.hostname === "127.0.0.1" || location.hostname === "localhost";
-    document.write(`<base href="${isLocal ? "/blog/" : "/PersonalBlogWebsite/blog/"}">`);
-  </script>
-  <title>Blog</title>
-  <link rel="icon" type="image/x-icon" href="assets/icons/icons8-blog-100.ico">
-  <link rel="stylesheet" href="assets/css/main.css">
+  <script type="module" src="/PersonalBlogWebsite/blog/assets/js/main.js" defer></script>
+  <link rel="stylesheet" href="/PersonalBlogWebsite/blog/assets/css/main.css">
+  <link rel="icon" type="image/x-icon" href="/PersonalBlogWebsite/blog/assets/icons/icons8-blog-100.ico">
+  <title>Blog của Thân</title>
 </head>
 
 <body>
   <button id="toggle-btn"></button>
   <section id="Navbar"></section>
-  <style>
-    #page{
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 1rem;
-      width: auto;
-    }
-    #page img{
-      height:50vw;
-      width: 50vw;
-      filter: grayscale(0.8);
-    }
-  </style>
-  <section id="page">
-    <h1>Trang đang trong quá trình cập nhật</h1>
-    <p>Vui lòng quay lại sau...</p>
-    <img src="assets/images/setting.gif" alt="setting">
-  </section>
-  <section id="Feedback"></section>
+  <section id="Page-updating"></section>
   <section id="Footer"></section>
 </body>
-<script src="assets/js/jquery-3.7.1.min.js"></script>
-<script src="assets/js/script.js"></script>
-
 </html>
