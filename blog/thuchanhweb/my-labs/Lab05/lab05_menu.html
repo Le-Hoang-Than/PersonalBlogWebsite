@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lab5 - Bai 1</title>
+    <style>
+        .container, .container2{
+            width: 900px;
+            margin: auto;
+        }
+
+        .container ul{
+            display: flex;
+            list-style: none;
+            justify-content: space-around;
+            background: aqua;
+            font-size: 20px;
+        }
+
+        .container ul li{
+            padding: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .container ul li:hover{
+            font-weight: bold;
+            background: orange;
+            color: white;
+            border-radius: 5px;
+        }
+
+        .container2 ul{
+            list-style: none;
+            background: blue;
+            font-size: 20px;
+            width: 50%;
+            padding: 0px;
+        }
+
+        .container2 ul li{
+            border-bottom: 2px solid white;
+            padding: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .container2 ul li:hover{
+            background: lightskyblue;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <ul>
+            <li>Trang Chu</li>
+            <li>Gioi Thieu</li>
+            <li>San Pham</li>
+            <li>Dich Vu</li>
+            <li>Lien He</li>
+        </ul>
+    </div>
+
+    <div class="container2">
+        <ul>
+            <li>Trang Chu</li>
+            <li>Gioi Thieu</li>
+            <li>San Pham</li>
+            <li>Dich Vu</li>
+            <li>Lien He</li>
+        </ul>
+    </div>
+</body>
+</html>
