@@ -1,4 +1,6 @@
-<?php include 'partials/header.php'; ?>
+<?php include 'partials/header.php'; 
+include 'partials/auth-check.php';
+?>
 <!-- chứa cả head và sidebar ẩn hiện -->
 <main id="Main-content">
     <?php include 'partials/sidebar.php'; ?>

@@ -1,6 +1,5 @@
 <?php
 require_once '../../../core/config/db.php';
-
 $name = $_POST['name'] ?? '';
 $slug = $_POST['slug'] ?? '';
 $parent_category_id = !empty($_POST['parent_category_id']) ? $_POST['parent_category_id'] : null;
@@ -38,7 +37,18 @@ if ($parent_category_id) {
 // Tạo thư mục nếu chưa tồn tại
 if (!file_exists($path)) {
     mkdir($path, 0755, true);
-    file_put_contents($path . "/index.php", "<?php\n// Trang $name\n?><h1>$name</h1>");
+    /**
+     *file_put_contents($path . "/index.php", "<?php\n// Trang $name\n?><h1>$name</h1>");
+     *file_put_contents($path . "/index.html", $template);
+     * 
+     */
+    // $templatePath = __DIR__ . '/../../../core/template/template.html'; // Đường dẫn đến template
+    // if (!file_exists($templatePath)) {
+    //     die("File template không tồn tại: $templatePath");
+    // }
+    // if (!copy($templatePath, $path . '/index.html')) {
+    //     die("Không thể sao chép template.");
+    // }
 }
 
 // Sau khi lưu thành công, chuyển hướng về trang danh sách danh mục

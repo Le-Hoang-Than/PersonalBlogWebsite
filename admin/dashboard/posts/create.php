@@ -1,269 +1,221 @@
-<!DOCTYPE html>
-<html lang="vi">
+<?php
+require_once '../../../core/config/db.php';
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trình Tạo Bài Viết</title>
-    <style>
-        /* Reset CSS cơ bản */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+// Lấy danh sách category
+$stmt = $pdo->prepare("CALL get_all_categories()");
+$stmt->execute();
+$categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$stmt->closeCursor();
 
-        .editor-container {
-            display: flex;
-            min-height: 100vh;
-            font-family: Arial, sans-serif;
-        }
+$selectedCategoryId = $_GET['category_id'] ?? null;
+$selectedTopicId = $_GET['topic_id'] ?? null;
+$selectedChapterId = $_GET['chapter_id'] ?? null;
 
-        .components-sidebar {
-            width: 250px;
-            background: #f5f5f5;
-            padding: 20px;
-            border-right: 1px solid #ddd;
-        }
+// Nếu có category_id, load topics
+$topics = [];
+if ($selectedCategoryId) {
+    $stmt = $pdo->prepare("CALL get_topics_by_category_id(:category_id)");
+    $stmt->execute(['category_id' => $selectedCategoryId]);
+    $topics = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+}
 
-        .component-type {
-            padding: 12px;
-            margin-bottom: 10px;
-            background: white;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
+// Nếu có topic_id, load chapters
+$chapters = [];
+if ($selectedTopicId) {
+    $stmt = $pdo->prepare("CALL get_chapters_by_topic(:topic_id)");
+    $stmt->execute(['topic_id' => $selectedTopicId]);
+    $chapters = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+}
+?>
+<?php include '../partials/header.php'; ?>
 
-        .component-type:hover {
-            background: #f0f0f0;
-            transform: translateX(5px);
-        }
+<main id="Main-content">
+    <?php include '../partials/sidebar.php'; ?>
 
-        .content-zone {
-            flex: 1;
-            padding: 20px;
-            background: white;
-        }
+    <div class="container">
+        <h2>Tạo bài viết mới</h2>
 
-        .content-block {
-            margin-bottom: 20px;
-            padding: 15px;
-            border: 1px solid #eee;
-            border-radius: 4px;
-            position: relative;
-        }
-
-        .content-block:hover {
-            border-color: #2196F3;
-        }
-
-        .delete-btn {
-            position: absolute;
-            top: 5px;
-            right: 5px;
-            background: #ff4444;
-            color: white;
-            border: none;
-            padding: 2px 8px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: none;
-        }
-
-        .content-block:hover .delete-btn {
-            display: block;
-        }
-
-        .placeholder {
-            color: #999;
-            text-align: center;
-            padding: 50px 20px;
-        }
-
-        .input-field {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 16px;
-        }
-
-        .image-preview {
-            max-width: 100%;
-            margin-top: 10px;
-            display: none;
-        }
-
-        /* Thêm style cho các thẻ heading */
-        .content-block h1,
-        .content-block h2,
-        .content-block h3 {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #eee;
-            margin: 10px 0;
-            outline: none;
-            font-family: Arial, sans-serif;
-        }
-
-        .content-block h1 {
-            font-size: 2em;
-            color: #333;
-        }
-
-        .content-block h2 {
-            font-size: 1.5em;
-            color: #444;
-        }
-
-        .content-block h3 {
-            font-size: 1.2em;
-            color: #666;
-        }
-        /* Thêm style cho phần heading có thể chỉnh sửa */
-    .editable-heading {
-        border: 1px solid transparent;
-        padding: 10px;
-        margin: 10px 0;
-        transition: all 0.3s;
-    }
-
-    .editable-heading:focus {
-        outline: none;
-        border-color: #2196F3;
-        background: #f8f8f8;
-    }
-
-    .editable-heading[contenteditable="true"]:empty::before {
-        content: attr(data-placeholder);
-        color: #999;
-    }
-    </style>
-</head>
-
-<body>
-    <div class="editor-container">
-        <!-- Sidebar chứa các thành phần -->
-        <aside class="components-sidebar">
-            <div class="component-type" data-type="h1">Tiêu đề H1</div>
-            <div class="component-type" data-type="h2">Tiêu đề H2</div>
-            <div class="component-type" data-type="h3">Tiêu đề H3</div>
-            <div class="component-type" data-type="h4">Tiêu đề H4</div>
-            <div class="component-type" data-type="h5">Tiêu đề H5</div>
-            <div class="component-type" data-type="h6">Tiêu đề H6</div>
-            <div class="component-type" data-type="text">Đoạn văn</div>
-            <div class="component-type" data-type="image">Hình ảnh</div>
-        </aside>
-
-        <!-- Khu vực nội dung chính -->
-        <main class="content-zone" id="contentZone">
-            <div class="placeholder">Kích vào các thành phần bên trái để thêm vào bài viết</div>
-        </main>
+<form method="POST" action="store.php" enctype="multipart/form-data" id="postForm">
+    <div class="form-group">
+        <label for="category">Danh mục:</label>
+        <select name="category_id" id="category" class="form-control" required>
+            <option value="">-- Chọn danh mục --</option>
+            <?php foreach ($categories as $cat): ?>
+                <option value="<?= $cat['id'] ?>" <?= $selectedCategoryId == $cat['id'] ? 'selected' : '' ?>>
+                    <?= htmlspecialchars($cat['name']) ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
     </div>
 
-    <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const contentZone = document.getElementById('contentZone');
-        const componentTypes = document.querySelectorAll('.component-type');
+    <div class="form-group">
+        <label for="topic">Chủ đề:</label>
+        <select name="topic_id" id="topic" class="form-control" <?= $selectedCategoryId ? '' : 'disabled' ?> required>
+            <option value="">-- Chọn chủ đề --</option>
+            <?php foreach ($topics as $topic): ?>
+                <option value="<?= $topic['id'] ?>" <?= $selectedTopicId == $topic['id'] ? 'selected' : '' ?>>
+                    <?= htmlspecialchars($topic['name']) ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
+    </div>
 
-        // Xử lý click vào các thành phần
-        componentTypes.forEach(component => {
-            component.addEventListener('click', () => {
-                const type = component.dataset.type;
-                createNewComponent(type);
-            });
-        });
+    <div class="form-group">
+        <label for="chapter">Chương:</label>
+        <select name="chapter_id" id="chapter" class="form-control" <?= $selectedTopicId ? '' : 'disabled' ?>>
+            <option value="">-- Chọn chương (tuỳ chọn) --</option>
+            <?php foreach ($chapters as $ch): ?>
+                <option value="<?= $ch['id'] ?>" <?= $selectedChapterId == $ch['id'] ? 'selected' : '' ?>>
+                    <?= htmlspecialchars($ch['name']) ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
+    </div>
 
-        // Tạo component mới
-        function createNewComponent(type) {
-            const wrapper = document.createElement('div');
-            wrapper.className = 'content-block';
+    <div class="form-group">
+        <label for="title">Tiêu đề bài viết:</label>
+        <input type="text" name="title" id="title" class="form-control" required placeholder="Nhập tiêu đề bài viết" />
+    </div>
 
-            // Nút xóa
-            const deleteBtn = document.createElement('button');
-            deleteBtn.className = 'delete-btn';
-            deleteBtn.innerHTML = '×';
-            deleteBtn.onclick = () => wrapper.remove();
+    <div id="editorjs"></div>
+    <input type="hidden" name="content" id="contentInput" />
 
-            // Nội dung chính
-            let content;
-            switch (type) {
-                case 'h1':
-                case 'h2':
-                case 'h3':
-                case 'h4':
-                case 'h5':
-                case 'h6':
-                    // Tạo thẻ heading với placeholder
-                    content = document.createElement(type);
-                    content.textContent = `Tiêu đề ${type.toUpperCase()}`;
-                    content.setAttribute('contenteditable', 'true');
-                    content.classList.add('editable-heading');
-                    break;
-                    
-                case 'text':
-                    content = document.createElement('textarea');
-                    content.className = 'input-field';
-                    content.placeholder = 'Nhập nội dung...';
-                    content.rows = 4;
-                    break;
+    <div class="form-group">
+        <button type="submit" class="btn">Lưu bài viết</button>
+    </div>
+</form>
+    </div>
+</main>
 
-                case 'image':
-                    content = document.createElement('div');
-                    content.innerHTML = `
-                        <input type="text" class="input-field image-url" placeholder="Dán URL hình ảnh...">
-                        <input type="file" class="image-upload" accept="image/*">
-                        <img class="image-preview">
-                    `;
-                    break;
-            }
-
-            // Thêm vào DOM
-            wrapper.appendChild(deleteBtn);
-            wrapper.appendChild(content);
-            contentZone.querySelector('.placeholder')?.remove();
-            contentZone.appendChild(wrapper);
-
-            // Xử lý hình ảnh
-            if (type === 'image') {
-                handleImageInput(wrapper);
-            }
-
-            // Focus vào nội dung khi tạo mới
-            if (type.startsWith('h')) {
-                content.focus();
+<!-- Các script editor.js và các plugin -->
+<script src="/PersonalBlogWebsite/admin/dashboard/assets/js/editorjs/editor.js"></script>
+<script src="/PersonalBlogWebsite/admin/dashboard/assets/js/editorjs/header.js"></script>
+<script src="/PersonalBlogWebsite/admin/dashboard/assets/js/editorjs/list.js"></script>
+<script src="/PersonalBlogWebsite/admin/dashboard/assets/js/editorjs/quote.js"></script>
+<script src="/PersonalBlogWebsite/admin/dashboard/assets/js/editorjs/marker.js"></script>
+<script src="/PersonalBlogWebsite/admin/dashboard/assets/js/editorjs/table.js"></script>
+<script src="/PersonalBlogWebsite/admin/dashboard/assets/js/editorjs/image.js"></script>
+<script src="/PersonalBlogWebsite/admin/dashboard/assets/js/editorjs/link.js"></script>
+<script>
+    const editor = new EditorJS({
+        holder: 'editorjs',
+        placeholder: 'Nhập nội dung bài viết...',
+        tools: {
+            header: Header,
+            list: List,
+            quote: Quote,
+            marker: Marker,
+            table: Table,
+            linkTool: {
+                class: LinkTool,
+                config: {
+                    endpoint: 'http://your-server.com/fetchUrl'
+                }
+            },
+            image: {
+                class: ImageTool,
+                config: {
+                    uploader: {
+                        uploadByFile(file) {
+                            const formData = new FormData();
+                            formData.append('image', file);
+                            return fetch('/PersonalBlogWebsite/admin/dashboard/posts/imageUpload.php', {
+                                method: 'POST',
+                                body: formData
+                            }).then(res => res.json()).then(data => {
+                                if (data.success) {
+                                    return {
+                                        success: 1,
+                                        file: { url: data.file.url }
+                                    };
+                                } else {
+                                    return Promise.reject(data.message || 'Upload failed');
+                                }
+                            }).catch(() => Promise.reject('Upload error'));
+                        },
+                        uploadByUrl(url) {
+                            return Promise.resolve({
+                                success: 1,
+                                file: { url: url }
+                            });
+                        }
+                    }
+                }
             }
         }
+    });
 
-            // Xử lý upload hình ảnh
-            function handleImageInput(wrapper) {
-                const urlInput = wrapper.querySelector('.image-url');
-                const fileInput = wrapper.querySelector('.image-upload');
-                const preview = wrapper.querySelector('.image-preview');
+    document.getElementById('postForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
 
-                // Xử lý nhập URL
-                urlInput.addEventListener('input', () => {
-                    preview.src = urlInput.value;
-                    preview.style.display = urlInput.value ? 'block' : 'none';
-                });
+        const title = document.getElementById('title').value.trim();
 
-                // Xử lý upload file
-                fileInput.addEventListener('change', (e) => {
-                    const file = e.target.files[0];
-                    if (file) {
-                        const reader = new FileReader();
-                        reader.onload = (e) => {
-                            preview.src = e.target.result;
-                            preview.style.display = 'block';
-                        }
-                        reader.readAsDataURL(file);
-                    }
-                });
+        try {
+            const outputData = await editor.save();
+            const contentJSON = JSON.stringify(outputData);
+
+            if (title === '') {
+                alert('Tiêu đề bài viết không được để trống.');
+                return;
             }
-        });
-    </script>
-</body>
 
-</html>
+            if (!outputData.blocks || outputData.blocks.length === 0) {
+                alert('Nội dung bài viết không được để trống.');
+                return;
+            }
+
+            // Nếu topic bị disabled hoặc không chọn, reset value về rỗng
+            if (document.getElementById('topic').disabled || document.getElementById('topic').value === '') {
+                document.getElementById('topic').value = '';
+            }
+
+            // Nếu chapter bị disabled hoặc không chọn, reset value về rỗng
+            if (document.getElementById('chapter').disabled || document.getElementById('chapter').value === '') {
+                document.getElementById('chapter').value = '';
+            }
+
+            document.getElementById('contentInput').value = contentJSON;
+            e.target.submit();
+
+        } catch (error) {
+            alert('Lỗi khi lưu nội dung bài viết: ' + error);
+        }
+    });
+
+    // Thêm xử lý enable/disable topic khi chọn category
+    document.getElementById('category').addEventListener('change', function () {
+        const topicSelect = document.getElementById('topic');
+        const chapterSelect = document.getElementById('chapter');
+
+        if (this.value) {
+            topicSelect.disabled = false;
+        } else {
+            topicSelect.value = '';
+            topicSelect.disabled = true;
+            chapterSelect.value = '';
+            chapterSelect.disabled = true;
+        }
+        // Trigger load lại trang với category_id mới để lấy topics
+        // Nếu bạn muốn làm ajax thì cần thêm code
+        window.location.href = `create.php?category_id=${this.value}`;
+    });
+
+    // Enable/disable chapter khi chọn topic
+    document.getElementById('topic').addEventListener('change', function () {
+        const chapterSelect = document.getElementById('chapter');
+        if (this.value) {
+            chapterSelect.disabled = false;
+            // Trigger load lại trang với category_id và topic_id mới
+            const categoryId = document.getElementById('category').value;
+            window.location.href = `create.php?category_id=${categoryId}&topic_id=${this.value}`;
+        } else {
+            chapterSelect.value = '';
+            chapterSelect.disabled = true;
+            const categoryId = document.getElementById('category').value;
+            window.location.href = `create.php?category_id=${categoryId}`;
+        }
+    });
+</script>
+<?php include '../partials/footer.php'; ?>

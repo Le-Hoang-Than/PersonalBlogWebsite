@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <title>Đăng nhập Admin</title>
     <link rel="stylesheet" href="/PersonalBlogWebsite/blog/assets/css/main.css">
+    <link rel="icon" type="image/x-icon" href="/PersonalBlogWebsite/admin/dashboard/assets/images/icons8-admin-100.png">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -18,7 +20,7 @@
             background-color: #fff;
             padding: 2rem 3rem;
             border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             max-width: 400px;
             width: 100%;
         }
@@ -65,6 +67,7 @@
         }
     </style>
 </head>
+
 <body>
 
     <div class="login-container">
@@ -77,11 +80,20 @@
 
             <label for="password">Mật khẩu</label>
             <input type="password" name="password" placeholder="Mật khẩu..." required>
-        <?php if (!empty($_GET['error'])): ?>
-            <div class="error"><?php echo htmlspecialchars($_GET['error']); ?></div>
-        <?php endif; ?>
+            <?php if (!empty($_GET['error'])): ?>
+                <div class="error"><?php echo htmlspecialchars($_GET['error']); ?></div>
+            <?php endif; ?>
 
             <button type="submit">Gửi mã xác nhận</button>
+        </form>
+        <hr>
+        <form action="teacher.php">
+            <small>Trang quản trị thao tác trực tiếp với các bài viết trên trang web, 
+                <b style="color:red;">nếu không phải GIẢNG VIÊN vui lòng không thao tác các chức năng bên trong.</b>
+            </small>
+            <br>
+            <button type="submit">Giảng viên đăng nhập</button>
+
         </form>
     </div>
 
@@ -91,7 +103,7 @@
     if (errorBox) {
         document.querySelectorAll("input").forEach(input => {
             input.addEventListener("focus", () => {
-                errorBox.textContent='';
+                errorBox.textContent = '';
             });
         });
     }

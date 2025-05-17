@@ -32,7 +32,6 @@
   margin: 0;
   box-sizing: border-box;
   text-decoration: none;
-  list-style: none;
   font-family: "Hack", sans-serif;
   border: none;
   outline: none;
@@ -64,7 +63,7 @@ img {
 p {
   font-size: 1em;
   line-height: 1.6;
-  color: #fff;
+  color: #000;
   transition: transform 0.5s ease;
 }
 
@@ -154,6 +153,7 @@ hr {
 }
 #Main-content > :last-child {
   flex: 1 1 100%;
+  margin-left: calc(3vh + 2rem);
 }
 
 @media (max-width: 600px), (min-width: 601px) and (max-width: 1024px) {
@@ -530,7 +530,7 @@ hr {
 }
 .sidebar {
   width: calc(3vh + 2rem);
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
   bottom: 0;
@@ -553,7 +553,7 @@ hr {
 }
 .sidebar:hover {
   transition: all 0.3s ease-out;
-  width: 30vw;
+  width: 20vw;
 }
 .sidebar:hover .sidebar-link span:not(:first-child) {
   opacity: 1;
@@ -644,6 +644,7 @@ hr {
   display: flex;
   align-items: center;
   transition: background-color 0.5s ease;
+  background-color: #e5ebf1;
 }
 .dropdown .sidebar-submenu li a {
   width: 100%;
@@ -660,7 +661,6 @@ hr {
   flex: 1;
   background: #fff;
   padding: 2rem;
-  border-radius: 10px;
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
 }
 
@@ -685,31 +685,31 @@ hr {
 }
 
 /* Bảng danh mục */
-.category-table {
+table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 1rem;
 }
 
-.category-table th,
-.category-table td {
+th,
+td {
   padding: 1rem;
   text-align: left;
   border-bottom: 1px solid #7ea4b8;
 }
 
-.category-table th {
+th {
   background: #5c829c;
   color: #fff;
   font-weight: 500;
 }
 
-.category-table tr:hover {
+tr:hover {
   background: #f8f9fa;
 }
 
 /* Cột hiển thị */
-.category-table td:nth-child(4) {
+td:nth-child(4) {
   text-align: center;
   font-size: 1.2rem;
 }
@@ -766,4 +766,28 @@ hr {
 .error-message {
   color: red;
   margin-bottom: 20px;
+}
+
+.filter-form {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+#editorjs {
+  background-color: #a8bfcf !important;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
+#editorjs .ce-block {
+  background-color: #fff;
+  border-radius: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+#editorjs .ce-toolbar__plus {
+  background-color: #000 !important;
+  color: #fff !important;
+  margin-right: 1rem;
 }

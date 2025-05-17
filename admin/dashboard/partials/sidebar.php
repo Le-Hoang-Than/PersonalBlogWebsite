@@ -22,7 +22,7 @@
                                 src="/PersonalBlogWebsite/admin/dashboard/assets/images/icons8-menu-100.png"
                                 alt="">
                         </span>
-                        <a href="/PersonalBlogWebsite/admin/dashboard/categories/"><span> Danh mục</span></a>
+                        <a href="/PersonalBlogWebsite/admin/dashboard/categories/"><span>Danh mục</span></a>
                         <span class="icon-wrapper dropdown-arrow">
                             <img class="icon default"
                                 src="/PersonalBlogWebsite/admin/dashboard/assets/images/icons8-dark-chevron-100.png"
@@ -33,10 +33,59 @@
                         </span>
                     </div>
                     <ul class="sidebar-submenu">
-                        <li><a class="sidebar-link" href="/PersonalBlogWebsite/"><span>Tất cả danh mục</span></a></li>
-                        <li><a class="sidebar-link" href="/PersonalBlogWebsite/"><span>Thêm danh mục</span></a></li>
+                        <li><a class="sidebar-link" href="/PersonalBlogWebsite/admin/dashboard/categories/"><span>Tất cả danh mục</span></a></li>
+                        <li><a class="sidebar-link" href="/PersonalBlogWebsite/admin/dashboard/categories/create.php"><span>Thêm danh mục</span></a></li>
                     </ul>
 
+                </li>
+                <li class="dropdown">
+                    <div class="sidebar-link">
+                        <span class="icon-wrapper">
+                            <img class="icon default"
+                                src="/PersonalBlogWebsite/admin/dashboard/assets/images/icons8-dark-hashtag-activity-grid-100.png" alt="">
+                            <img class="icon hover"
+                                src="/PersonalBlogWebsite/admin/dashboard/assets/images/icons8-hashtag-activity-grid-100.png"
+                                alt="">
+                        </span>
+                        <a href="/PersonalBlogWebsite/admin/dashboard/topics/"><span>Chủ đề</span></a>
+                        <span class="icon-wrapper dropdown-arrow">
+                            <img class="icon default"
+                                src="/PersonalBlogWebsite/admin/dashboard/assets/images/icons8-dark-chevron-100.png"
+                                alt="dropdown-arrow">
+                            <img class="icon hover"
+                                src="/PersonalBlogWebsite/admin/dashboard/assets/images/icons8-chevron-100.png"
+                                alt="dropdown-arrow">
+                        </span>
+                    </div>
+                    <ul class="sidebar-submenu">
+                        <li><a class="sidebar-link" href="/PersonalBlogWebsite/admin/dashboard/topics"><span>Tất cả chủ đề</span></a></li>
+                        <li><a class="sidebar-link" href="/PersonalBlogWebsite/admin/dashboard/topics/create.php"><span>Thêm chủ đề</span></a></li>
+                    </ul>
+
+                </li>
+                <li class="dropdown">
+                    <div class="sidebar-link">
+                        <span class="icon-wrapper">
+                            <img class="icon default"
+                                src="/PersonalBlogWebsite/admin/dashboard/assets/images/icons8-dark-bookmark-50.png" alt="">
+                            <img class="icon hover"
+                                src="/PersonalBlogWebsite/admin/dashboard/assets/images/icons8-bookmark-50.png"
+                                alt="">
+                        </span>
+                        <a href="/PersonalBlogWebsite/admin/dashboard/chapters/"><span>Chương</span></a>
+                        <span class="icon-wrapper dropdown-arrow">
+                            <img class="icon default"
+                                src="/PersonalBlogWebsite/admin/dashboard/assets/images/icons8-dark-chevron-100.png"
+                                alt="dropdown-arrow">
+                            <img class="icon hover"
+                                src="/PersonalBlogWebsite/admin/dashboard/assets/images/icons8-chevron-100.png"
+                                alt="dropdown-arrow">
+                        </span>
+                    </div>
+                    <ul class="sidebar-submenu">
+                        <li><a class="sidebar-link" href="/PersonalBlogWebsite/admin/dashboard/chapters/"><span>Tất cả chương</span></a></li>
+                        <li><a class="sidebar-link" href="/PersonalBlogWebsite/admin/dashboard/chapters/create.php"><span>Thêm chương mới</span></a></li>
+                    </ul>
                 </li>
                 <li class="dropdown">
                     <div class="sidebar-link">
@@ -47,8 +96,10 @@
                                 src="/PersonalBlogWebsite/admin/dashboard/assets/images/icons8-page-100.png"
                                 alt="">
                         </span>
-                        <span>Bài viết</span>
-                        <span class="icon-wrapper dropdown-arrow">
+                        <a href="/PersonalBlogWebsite/admin/dashboard/posts/">
+                            <span>Bài viết</span>
+                        </a>
+                            <span class="icon-wrapper dropdown-arrow">
                             <img class="icon default"
                                 src="/PersonalBlogWebsite/admin/dashboard/assets/images/icons8-dark-chevron-100.png"
                                 alt="dropdown-arrow">
@@ -58,7 +109,7 @@
                         </span>
                     </div>
                     <ul class="sidebar-submenu">
-                        <li><a class="sidebar-link" href="/PersonalBlogWebsite/"><span>Tất cả bài viết</span></a></li>
+                        <li><a class="sidebar-link" href="/PersonalBlogWebsite/admin/dashboard/posts"><span>Tất cả bài viết</span></a></li>
                         <li><a class="sidebar-link" href="/PersonalBlogWebsite/admin/dashboard/posts/create.php"><span>Viết bài mới</span></a></li>
                     </ul>
                 </li>
@@ -86,3 +137,4 @@
         </div>
     </div>
 </section>
+<script src="/PersonalBlogWebsite/admin/dashboard/assets/js/sidebar.js"></script>

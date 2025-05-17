@@ -31,7 +31,7 @@ VALUES
         'lehoangthan.blog@gmail.com',
         SHA2('DH52201426', 256),
         'Lê Hoàng Thân',
-        '/images/admin-avatar.png'
+        '/PersonalBlogWebsite/admin/dashboard/assets/images/admin-avatar/admin-avatar.png'
     );
 
 -- Thủ tục kiểm tra tài khoản
@@ -175,12 +175,14 @@ CREATE TABLE IF NOT EXISTS `category` (
     `id` INT AUTO_INCREMENT PRIMARY KEY,
     `name` VARCHAR(255) NOT NULL,
     `slug` VARCHAR(255) NOT NULL UNIQUE,
+    `is_visible` TINYINT(1) NOT NULL DEFAULT 1,
     `parent_category_id` INT DEFAULT NULL,
     `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+    `updated_at` DATETIME DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
     `deleted_at` DATETIME DEFAULT NULL,
     FOREIGN KEY (`parent_category_id`) REFERENCES `category` (`id`) ON DELETE
     SET
-        NULL
+        NULL ON UPDATE CASCADE
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 
 -- Tối ưu truy vấn theo phân cấp
@@ -223,58 +225,352 @@ WHERE
 END / / DELIMITER;
 
 -- Chèn danh mục mới
-DELIMITER //
-
-CREATE PROCEDURE insert_category(
+DELIMITER / / CREATE PROCEDURE insert_category(
     IN input_name VARCHAR(255),
     IN input_slug VARCHAR(255),
     IN input_parent_id INT
-)
-BEGIN
-    INSERT INTO category (name, slug, parent_category_id)
-    VALUES (input_name, input_slug, input_parent_id);
-END //
+) BEGIN
+INSERT INTO
+    category (name, slug, parent_category_id)
+VALUES
+    (input_name, input_slug, input_parent_id);
 
-DELIMITER ;
+END / / DELIMITER;
 
-DELIMITER //
+DELIMITER / / CREATE PROCEDURE delete_category(IN in_category_id INT) BEGIN -- Xóa tất cả các bài viết liên quan đến danh mục này
+DELETE FROM
+    post
+WHERE
+    category_id = in_category_id;
 
-CREATE PROCEDURE delete_category(IN in_category_id INT)
-BEGIN
-    -- Xóa tất cả các bài viết liên quan đến danh mục này
-    DELETE FROM post WHERE category_id = in_category_id;
+-- Xóa danh mục
+DELETE FROM
+    category
+WHERE
+    id = in_category_id;
 
-    -- Xóa danh mục
-    DELETE FROM category WHERE id = in_category_id;
-
-END //
-
-DELIMITER ;
+END / / DELIMITER;
 
 -- -------------------------------
--- 4. Bảng post
+-- 4. Bảng topic
+-- -------------------------------
+CREATE TABLE IF NOT EXISTS `topic` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `name` VARCHAR(255) NOT NULL,
+    `slug` VARCHAR(255) NOT NULL UNIQUE,
+    `category_id` INT NOT NULL,
+    `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+    `updated_at` DATETIME DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+    `deleted_at` DATETIME DEFAULT NULL,
+    `is_visible` TINYINT(1) NOT NULL DEFAULT 1,
+    FOREIGN KEY (`category_id`) REFERENCES `category`(`id`) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+--lấy topic từ category id
+DELIMITER / / CREATE PROCEDURE get_topics_by_category_id(IN cat_id INT) BEGIN
+SELECT
+    *
+FROM
+    topic
+WHERE
+    category_id = cat_id
+    AND deleted_at IS NULL
+ORDER BY
+    name ASC;
+
+END / / DELIMITER;
+
+-- kiểm tra slug
+DELIMITER $ $ CREATE PROCEDURE check_topic_slug_exists(IN slug VARCHAR(255)) BEGIN
+SELECT
+    COUNT(*) AS slug_count
+FROM
+    topic
+WHERE
+    slug = slug;
+
+END $ $ DELIMITER;
+
+--thêm chủ đề mới
+DELIMITER $ $ CREATE PROCEDURE insert_topic(
+    IN p_name VARCHAR(255),
+    IN p_slug VARCHAR(255),
+    IN p_category_id INT
+) BEGIN
+INSERT INTO
+    topic (name, slug, category_id)
+VALUES
+    (p_name, p_slug, p_category_id);
+
+END $ $ DELIMITER;
+
+--lấy tất cả topic
+DELIMITER $ $ CREATE PROCEDURE get_all_topics() BEGIN
+SELECT
+    t.id,
+    t.name,
+    t.slug,
+    t.created_at,
+    c.name AS category_name
+FROM
+    topic t
+    LEFT JOIN category c ON t.category_id = c.id
+ORDER BY
+    t.name ASC;
+
+END $ $ DELIMITER;
+
+--Xóa chủ đề
+DELIMITER / / CREATE PROCEDURE delete_topic(IN topicId INT) BEGIN
+DELETE FROM
+    topic
+WHERE
+    id = topicId;
+
+END;
+
+/ / DELIMITER;
+
+-- -------------------------------
+-- 5. Bảng chapter
+-- -------------------------------
+CREATE TABLE IF NOT EXISTS `chapter` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `name` VARCHAR(255) NOT NULL,
+    `slug` VARCHAR(255) NOT NULL UNIQUE,
+    `topic_id` INT NOT NULL,
+    `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+    `updated_at` DATETIME DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+    `deleted_at` DATETIME DEFAULT NULL,
+    `is_visible` TINYINT(1) NOT NULL DEFAULT 1,
+    FOREIGN KEY (`topic_id`) REFERENCES `topic`(`id`) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+-- Lấy tất cả chương
+DELIMITER / / CREATE PROCEDURE get_all_chapters() BEGIN
+SELECT
+    *
+FROM
+    chapter
+ORDER BY
+    name asc;
+
+END / / DELIMITER;
+
+--Kiểm tra slug
+DELIMITER / / CREATE PROCEDURE check_chapter_slug_exists(IN ch_slug VARCHAR(255)) BEGIN
+SELECT
+    COUNT(*) AS slug_count
+FROM
+    chapter
+WHERE
+    slug = ch_slug
+    AND deleted_at IS NULL;
+
+END / / DELIMITER;
+
+-- 1. Lấy danh sách chương theo topic
+DELIMITER / / CREATE PROCEDURE get_chapters_by_topic(IN topicId INT) BEGIN
+SELECT
+    *
+FROM
+    chapter
+WHERE
+    topic_id = topicId
+ORDER BY
+    id DESC;
+
+END;
+
+/ / DELIMITER;
+
+-- 2. Thêm chương mới
+DELIMITER / / CREATE PROCEDURE insert_chapter(
+    IN ch_name VARCHAR(255),
+    IN ch_slug VARCHAR(255),
+    IN ch_topic_id INT
+) BEGIN
+INSERT INTO
+    chapter (name, slug, topic_id)
+VALUES
+    (ch_name, ch_slug, ch_topic_id);
+
+END;
+
+/ / DELIMITER;
+
+-- 3. Cập nhật chương
+DELIMITER / / CREATE PROCEDURE update_chapter(
+    IN ch_id INT,
+    IN ch_name VARCHAR(255),
+    IN ch_slug VARCHAR(255)
+) BEGIN
+UPDATE
+    chapter
+SET
+    name = ch_name,
+    slug = ch_slug
+WHERE
+    id = ch_id;
+
+END;
+
+/ / DELIMITER;
+
+-- 4. Xóa chương
+DELIMITER / / CREATE PROCEDURE delete_chapter(IN ch_id INT) BEGIN
+DELETE FROM
+    chapter
+WHERE
+    id = ch_id;
+
+END;
+
+/ / DELIMITER;
+
+-- -------------------------------
+-- 6. Bảng post
 -- -------------------------------
 CREATE TABLE IF NOT EXISTS `post` (
     `id` INT AUTO_INCREMENT PRIMARY KEY,
     `title` VARCHAR(255) NOT NULL,
     `slug` VARCHAR(255) NOT NULL UNIQUE,
+    `is_visible` TINYINT(1) NOT NULL DEFAULT 1,
+
     `category_id` INT DEFAULT NULL,
+    `topic_id` INT DEFAULT NULL,
+    `chapter_id` INT DEFAULT NULL,
     `admin_id` INT NOT NULL,
+
     `thumbnail_image_path` VARCHAR(255) DEFAULT NULL,
-    `content_html` TEXT NOT NULL,
+    `content_json` JSON NOT NULL,
     `toc_json` JSON DEFAULT NULL,
+
     `is_published` BOOLEAN DEFAULT FALSE,
     `published_at` DATETIME DEFAULT NULL,
     `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
     `updated_at` DATETIME DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
     `deleted_at` DATETIME DEFAULT NULL,
-    `purge_method` ENUM ('manual', 'auto') DEFAULT NULL,
-    `purge_scheduled_date` DATETIME DEFAULT NULL,
-    FOREIGN KEY (`category_id`) REFERENCES `category` (`id`) ON DELETE
-    SET
-        NULL,
-        FOREIGN KEY (`admin_id`) REFERENCES `admin` (`id`) ON DELETE CASCADE
+
+    FOREIGN KEY (`category_id`) REFERENCES `category` (`id`) ON DELETE SET NULL,
+    FOREIGN KEY (`topic_id`) REFERENCES `topic` (`id`) ON DELETE SET NULL,
+    FOREIGN KEY (`chapter_id`) REFERENCES `chapter` (`id`) ON DELETE SET NULL,
+    FOREIGN KEY (`admin_id`) REFERENCES `admin` (`id`) ON DELETE CASCADE
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
+
+DELIMITER //
+CREATE PROCEDURE get_posts_by_chapter_id(IN ch_id INT)
+BEGIN
+    SELECT * FROM post WHERE chapter_id = ch_id AND deleted_at IS NULL ORDER BY created_at DESC;
+END //
+
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE get_posts_filtered(
+    IN p_category_id INT,
+    IN p_topic_id INT,
+    IN p_chapter_id INT
+)
+BEGIN
+    SELECT *
+    FROM post
+    WHERE (category_id = p_category_id OR p_category_id IS NULL)
+      AND (topic_id = p_topic_id OR p_topic_id IS NULL)
+      AND (chapter_id = p_chapter_id OR p_chapter_id IS NULL)
+    ORDER BY created_at DESC;
+END //
+DELIMITER ;
+DELIMITER $$
+
+CREATE PROCEDURE get_posts_by_category_id(IN categoryId INT)
+BEGIN
+    SELECT 
+        p.id,
+        p.title,
+        p.slug,
+        p.created_at,
+        p.category_id,
+        p.topic_id,
+        p.chapter_id
+    FROM post p
+    WHERE p.category_id = categoryId
+      AND p.topic_id IS NULL
+      AND p.chapter_id IS NULL
+    ORDER BY p.created_at DESC;
+END$$
+
+DELIMITER ;
+
+--Trigger đảm bảo chỉ một trong 3 cột liên kết được gán (Post liên kết 1 nơi duy nhất)
+DELIMITER / / CREATE TRIGGER trg_check_post_relation BEFORE
+INSERT
+    ON post FOR EACH ROW BEGIN DECLARE total INT;
+
+SET
+    total = (
+        CASE
+            WHEN NEW.category_id IS NOT NULL THEN 1
+            ELSE 0
+        END
+    ) + (
+        CASE
+            WHEN NEW.topic_id IS NOT NULL THEN 1
+            ELSE 0
+        END
+    ) + (
+        CASE
+            WHEN NEW.chapter_id IS NOT NULL THEN 1
+            ELSE 0
+        END
+    );
+
+IF total != 1 THEN SIGNAL SQLSTATE '45000'
+SET
+    MESSAGE_TEXT = 'Post phải thuộc duy nhất một: category, topic hoặc chapter';
+
+END IF;
+
+END / / DELIMITER;
+
+-- kiểm soát dữ liệu khi chỉnh sửa
+DELIMITER / / CREATE TRIGGER trg_check_post_relation_update BEFORE
+UPDATE
+    ON post FOR EACH ROW BEGIN DECLARE total INT;
+
+SET
+    total = (
+        CASE
+            WHEN NEW.category_id IS NOT NULL THEN 1
+            ELSE 0
+        END
+    ) + (
+        CASE
+            WHEN NEW.topic_id IS NOT NULL THEN 1
+            ELSE 0
+        END
+    ) + (
+        CASE
+            WHEN NEW.chapter_id IS NOT NULL THEN 1
+            ELSE 0
+        END
+    );
+
+IF total != 1 THEN SIGNAL SQLSTATE '45000'
+SET
+    MESSAGE_TEXT = 'Post phải thuộc duy nhất một: category, topic hoặc chapter';
+
+END IF;
+
+END / / DELIMITER;
+DELIMITER //
+
+CREATE PROCEDURE delete_post(IN post_id INT)
+BEGIN
+    DELETE FROM post WHERE id = post_id;
+END //
+
+DELIMITER ;
 
 -- -------------------------------
 -- 5. Bảng feedback
